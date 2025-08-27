@@ -1,42 +1,203 @@
+/* app/globals.css */
+
+/* Define color palette using CSS variables for easy theming */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background-color: #0d1117; /* Very dark blue, almost black */
+    --card-background: #161b22; /* Dark blue-gray */
+    --primary-blue: #3b82f6; /* A vibrant blue for accents */
+    --primary-blue-hover: #2563eb; /* A darker blue for hover effects */
+    --text-primary: #c9d1d9; /* Light gray for primary text */
+    --text-secondary: #8b949e; /* Muted gray for subtitles */
+    --border-color: #30363d; /* Subtle border color */
+    --error-color: #f87171; /* Red for error messages */
+    --input-background: #010409; /* Very dark input background */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
+/* Basic reset and body styling */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    margin: 0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Main container for the authentication card */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* The card that holds the form */
+.auth-card {
+    background-color: var(--card-background);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Title and subtitle styling */
+.auth-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.auth-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Form layout and styling */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #484f58;
+}
+
+/* Input focus and error states */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.form-group input.input-error {
+    border-color: var(--error-color);
+}
+
+.form-group input.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.3);
+}
+
+/* Error message styling */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+.api-error {
+    background-color: rgba(248, 113, 113, 0.1);
+    border: 1px solid var(--error-color);
+    border-radius: 6px;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+/* Submit button styling */
+.submit-button {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+/* Toggle button for switching between Sign In and Sign Up */
+.auth-toggle {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.auth-toggle button {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.auth-toggle button:hover {
+    text-decoration: underline;
+}
+
+/* Simple animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .auth-title {
+        font-size: 1.5rem;
+    }
 }

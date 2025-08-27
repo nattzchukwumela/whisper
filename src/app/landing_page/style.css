@@ -1,0 +1,242 @@
+/* app/globals.css */
+
+/* ... (keep all your existing styles from the auth page) ... */
+
+/* === LANDING PAGE STYLES === */
+
+/* Main layout for the landing page */
+.landing-main {
+    width: 100%;
+    flex-grow: 1; /* Allows the main content to fill available space */
+}
+
+/* Header Styling */
+.landing-header {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: rgba(13, 17, 23, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-button {
+    background-color: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.nav-button:hover {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12rem 2rem 6rem; /* Padding to account for fixed header */
+    background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.1),
+        transparent 70%
+    );
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeIn 1s 0.2s ease-in-out both;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
+
+.cta-button {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* Features Section */
+.features-section {
+    padding: 6rem 2rem;
+    background-color: var(--background-color);
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--card-background);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Footer Styling */
+.landing-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Responsive adjustments for landing page */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .main-nav {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        display: none; /* Hide text links on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-header {
+        padding: 1rem;
+    }
+
+    .hero-section {
+        padding: 8rem 1.5rem 4rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
