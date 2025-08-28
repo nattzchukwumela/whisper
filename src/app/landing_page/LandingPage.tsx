@@ -119,9 +119,9 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="landing-footer">
+      {/*<footer className="landing-footer">
         <p>&copy; {new Date().getFullYear()} Whispers. All Rights Reserved.</p>
-      </footer>
+      </footer>*/}
     </>
   );
 }
