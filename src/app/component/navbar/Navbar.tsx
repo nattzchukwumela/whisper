@@ -1,14 +1,37 @@
-// app/components/Header.tsx
+"use client";
+
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { getSession } from "next-auth/react";
-
-import "./nav.css";
-
+import { useEffect, useState } from "react";
 import { links } from "../../../lib/interacts";
 import { getInitials } from "@/util/getInitials";
+import "./nav.css";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
 export default function Navbar() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await fetch("/api/protected/me", { method: "GET" });
+        if (res.ok) {
+          const data = await res.json();
+          console.log(data);
+          setUser(data.user);
+        }
+      } catch (err) {
+        console.error("Failed to fetch user", err);
+      }
+    };
+    getUser();
+  }, []);
+
   return (
     <header className="landing-header">
       <div className="header-container">
@@ -17,19 +40,17 @@ export default function Navbar() {
             Whispers
           </Link>
           <nav className="main-nav">
-            {links.map((link, index) => {
-              return (
-                <Link href="/" key={index} className="nav-links">
-                  {link}
-                </Link>
-              );
-            })}
+            {links.map((link, index) => (
+              <Link href="/" key={index} className="nav-links">
+                {link}
+              </Link>
+            ))}
           </nav>
         </div>
 
         <div className="user-actions">
           <div className="search-box">
-            <Search size={20} /> {/* Control icon size */}
+            <Search size={20} />
             <input
               type="text"
               id="search"
@@ -37,10 +58,9 @@ export default function Navbar() {
               placeholder="Search whispers"
             />
           </div>
-          {/* Use divs with new classes for circular buttons */}
           <div className="action-btn add-btn">+</div>
           <div className="action-btn avatar-btn">
-            {getInitials("Wilson Fisk")}
+            {user ? getInitials(user.name) : "??"}
           </div>
         </div>
       </div>
