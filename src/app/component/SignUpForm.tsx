@@ -109,7 +109,7 @@ export default function SignUpForm() {
       </div>
 
       <button type="submit" className="submit-button">
-        {isLoading ? <BeatLoader /> : "Create Account"}
+        {isLoading ? <BeatLoader size={10} color="#fff" /> : "Create Account"}
       </button>
     </form>
   );

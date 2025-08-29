@@ -83,7 +83,7 @@ export default function SignInForm() {
       </div>
 
       <button type="submit" className="submit-button">
-        {isLoading ? <BeatLoader /> : "Sign In"}
+        {isLoading ? <BeatLoader size={10} color="#fff" /> : "Sign In"}
       </button>
     </form>
   );
