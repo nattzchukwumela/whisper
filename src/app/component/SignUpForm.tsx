@@ -2,6 +2,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import axios from "axios";
 
 export default function SignUpForm() {
   const {
@@ -15,6 +16,25 @@ export default function SignUpForm() {
   const onSubmit = async (data: any) => {
     setApiError(null);
     console.log("Sign-up data:", data);
+    try {
+      const res = await axios.post("/api/auth/signup/", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Sign Uo Successful:", res.data);
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        if (err.response) {
+          console.log(err.response);
+          setApiError(err.response.data?.error || "Invalid data credentials");
+        } else if (err.request) {
+          setApiError("Server not responding. Please try again later.");
+        }
+      } else {
+        setApiError("Something went wrong. Please try again.");
+      }
+    }
     // TODO: Replace with your actual API call to register the user
     // Example: try { await signUp(data); } catch (err) { setApiError('Username or email already exists.'); }
   };
