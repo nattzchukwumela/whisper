@@ -15,7 +15,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id @unique @default(autoincrement())
   name      String
   email     String   @unique
   password  String
@@ -26,7 +26,8 @@ model User {
   uniqueLink String @unique
 
   // messages received by this user
-  messages AnonymousMessage[]
+  messages     AnonymousMessage[]
+  RefreshToken RefreshToken[]
 }
 
 model AnonymousMessage {
@@ -37,4 +38,24 @@ model AnonymousMessage {
   // reference to the receiver (the User who owns the unique link)
   receiverId Int
   receiver   User @relation(fields: [receiverId], references: [id])
+}
+
+model RefreshToken {
+  id        Int    @id @default(autoincrement())
+  tokenHash String @unique // store a SHA-256 hash of the refresh token
+  userId    Int
+  user      User   @relation(fields: [id], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime       @default(now())
+  expiresAt    DateTime
+  revoked      Boolean        @default(false)
+  rotatedAt    DateTime?
+  replacedById Int? // points to the new token after rotation
+  replacedBy   RefreshToken?  @relation("ReplacedBy", fields: [replacedById], references: [id])
+  // inverse side so Prisma is happy
+  previous     RefreshToken[] @relation("ReplacedBy")
+
+  // optional session metadata
+  userAgent String?
+  ipAddress String?
 }
