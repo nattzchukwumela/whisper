@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
+import { BeatLoader } from "react-spinners";
 
 export default function SignInForm() {
   const {
@@ -11,10 +12,12 @@ export default function SignInForm() {
     formState: { errors },
   } = useForm();
   const [apiError, setApiError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Placeholder for your form submission logic
   const onSubmit = async (data: any) => {
     setApiError(null); // reset any old errors
+    setIsLoading(true);
     try {
       const res = await axios.post("/api/auth/signin/", data, {
         headers: {
@@ -39,6 +42,8 @@ export default function SignInForm() {
         // Unknown error (coding bug, etc.)
         setApiError("Something went wrong. Please try again.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,7 +83,7 @@ export default function SignInForm() {
       </div>
 
       <button type="submit" className="submit-button">
-        Sign In
+        {isLoading ? <BeatLoader /> : "Sign In"}
       </button>
     </form>
   );

@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
+import { BeatLoader } from "react-spinners";
 
 export default function SignUpForm() {
   const {
@@ -11,11 +12,12 @@ export default function SignUpForm() {
     formState: { errors },
   } = useForm();
   const [apiError, setApiError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Placeholder for your sign-up submission logic
   const onSubmit = async (data: any) => {
     setApiError(null);
-    console.log("Sign-up data:", data);
+    setIsLoading(true);
     try {
       const res = await axios.post("/api/auth/signup/", data, {
         headers: {
@@ -34,6 +36,8 @@ export default function SignUpForm() {
       } else {
         setApiError("Something went wrong. Please try again.");
       }
+    } finally {
+      setIsLoading(false);
     }
     // TODO: Replace with your actual API call to register the user
     // Example: try { await signUp(data); } catch (err) { setApiError('Username or email already exists.'); }
@@ -105,7 +109,7 @@ export default function SignUpForm() {
       </div>
 
       <button type="submit" className="submit-button">
-        Create Account
+        {isLoading ? <BeatLoader /> : "Create Account"}
       </button>
     </form>
   );
