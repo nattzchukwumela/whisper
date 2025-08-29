@@ -6,9 +6,18 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = process.env.NEXTAUTH_SECRET!;
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  const { identifier, password } = await req.json();
+
+  if (!identifier || !password) {
+    console.log(identifier, password);
+    return NextResponse.json(
+      { success: false, error: "Email and password are required" },
+      { status: 400 },
+    );
+  }
+
   const user = await prisma.user.findUnique({
-    where: { email },
+    where: { email: identifier },
   });
 
   if (!user)

@@ -2,6 +2,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import axios from "axios";
 
 export default function SignInForm() {
   const {
@@ -13,10 +14,32 @@ export default function SignInForm() {
 
   // Placeholder for your form submission logic
   const onSubmit = async (data: any) => {
-    setApiError(null);
-    console.log("Sign-in data:", data);
-    // TODO: Replace with your actual API call
-    // Example: try { await signIn(data); } catch (err) { setApiError('Invalid credentials.'); }
+    setApiError(null); // reset any old errors
+    try {
+      const res = await axios.post("/api/auth/signin/", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("Login success:", res.data);
+
+      // TODO: handle redirect, store session, etc.
+    } catch (err: any) {
+      if (axios.isAxiosError(err)) {
+        // API responded but with error (e.g., 401 Unauthorized)
+        if (err.response) {
+          console.log(err.response);
+          setApiError(err.response.data?.error || "Invalid credentials");
+        } else if (err.request) {
+          // No response at all (network/server down)
+          setApiError("Server not responding. Please try again later.");
+        }
+      } else {
+        // Unknown error (coding bug, etc.)
+        setApiError("Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (
