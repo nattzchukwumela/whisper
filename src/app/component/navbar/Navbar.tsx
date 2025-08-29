@@ -1,6 +1,8 @@
 // app/components/Header.tsx
 import Link from "next/link";
 import { Search } from "lucide-react";
+import { getSession } from "next-auth/react";
+
 import "./nav.css";
 
 import { links } from "../../../lib/interacts";
