@@ -1,4 +1,3 @@
-// src/lib/cookies.ts
 import { NextResponse } from "next/server";
 
 const isProd = process.env.NODE_ENV === "production";

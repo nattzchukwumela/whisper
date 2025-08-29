@@ -1,28 +1,27 @@
 import prisma from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-
-const JWT_SECRET = process.env.NEXTAUTH_SECRET!;
+import {
+  signAccessToken,
+  generateRefreshTokenString,
+  persistRefreshToken,
+} from "@/lib/auth";
+import { setAuthCookies } from "@/lib/cookies";
 
 export async function POST(req: Request) {
   const { identifier, password } = await req.json();
 
   if (!identifier || !password) {
-    console.log(identifier, password);
     return NextResponse.json(
       { success: false, error: "Email and password are required" },
       { status: 400 },
     );
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email: identifier },
-  });
-
+  const user = await prisma.user.findUnique({ where: { email: identifier } });
   if (!user)
     return NextResponse.json(
-      { success: false, error: "User not found or Invalid credentials" },
+      { success: false, error: "Invalid credentials" },
       { status: 401 },
     );
 
@@ -33,14 +32,21 @@ export async function POST(req: Request) {
       { status: 401 },
     );
 
-  const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "7d" });
-  const res = NextResponse.json({ success: true });
-  res.cookies.set("token", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "strict",
-    path: "/",
+  const access = signAccessToken({ userId: user.id }, 15); // 15 minutes
+  const refresh = generateRefreshTokenString(); // opaque string
+  await persistRefreshToken({
+    userId: user.id,
+    refreshToken: refresh,
+    days: 30,
+    userAgent: req.headers.get("user-agent"),
+    ipAddress: req.headers.get("x-forwarded-for") ?? null,
   });
 
-  return res;
+  const res = NextResponse.json({ success: true });
+  return setAuthCookies(res, {
+    access,
+    accessMaxAgeSec: 60 * 15,
+    refresh,
+    refreshMaxAgeSec: 60 * 60 * 24 * 30,
+  });
 }
