@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
+
+/* Define color palette using CSS variables for easy theming */
+:root {
+    --background-color: #0d1117; /* Very dark blue, almost black */
+    --card-background: #161b22; /* Dark blue-gray */
+    --primary-blue: #3b82f6; /* A vibrant blue for accents */
+    --primary-blue-hover: #2563eb; /* A darker blue for hover effects */
+    --text-primary: #c9d1d9; /* Light gray for primary text */
+    --text-secondary: #8b949e; /* Muted gray for subtitles */
+    --border-color: #30363d; /* Subtle border color */
+    --search-bg: #21262d; /* Dark gray for search background */
+}
+
+/* --- Main Header --- */
+.landing-header {
+    width: 100%;
+    padding: 0.75rem 2rem; /* Adjusted padding */
+    background-color: #000; /* Solid black background like the example */
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Left Side: Logo & Nav --- */
+.logo-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Increased gap between logo and links */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links {
+    color: var(--text-secondary);
+    font-size: 16px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links:hover {
+    color: var(--text-primary);
+}
+
+/* --- Right Side: Search & User Actions --- */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Gap between search, add button, and avatar */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--search-bg);
+    border-radius: 9999px; /* This creates the pill shape */
+    padding: 8px 15px;
+    width: 250px;
+    border: 1px solid var(--border-color); /* Subtle border */
+    color: var(--text-secondary); /* Color for the icon */
+}
+
+.search-box input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--text-primary); /* Typing color */
+    font-size: 14px;
+}
+
+.search-box input::placeholder {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* New styles for the circular action buttons */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes it a circle */
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.action-btn:hover {
+    filter: brightness(0.9);
+}
+
+.add-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    font-size: 1.75rem; /* Larger plus sign */
+    line-height: 1; /* Helps vertical alignment of the '+' */
+}
+
+.avatar-btn {
+    background-color: var(--card-background); /* A different background */
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}

@@ -12,7 +12,11 @@
     --error-color: #f87171; /* Red for error messages */
     --input-background: #010409; /* Very dark input background */
 }
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* Basic reset and body styling */
 body {
     margin: 0;
