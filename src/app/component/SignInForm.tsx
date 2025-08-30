@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
   const {
@@ -13,6 +14,7 @@ export default function SignInForm() {
   } = useForm();
   const [apiError, setApiError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   // Placeholder for your form submission logic
   const onSubmit = async (data: any) => {
@@ -28,6 +30,7 @@ export default function SignInForm() {
       console.log("Login success:", res.data);
 
       // TODO: handle redirect, store session, etc.
+      router.push("/dashboard");
     } catch (err: any) {
       if (axios.isAxiosError(err)) {
         // API responded but with error (e.g., 401 Unauthorized)

@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import prisma from "@/lib/prisma";
 
-const JWT_SECRET = process.env.JWT_SECRET!;
+const JWT_SECRET = process.env.NEXTAUTH_SECRET!;
 
 // Access token: short-lived (e.g., 15m)
 export function signAccessToken(payload: object, minutes = 15) {
