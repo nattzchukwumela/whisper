@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { links } from "../../../lib/interacts";
 import { getInitials } from "@/util/getInitials";
 import "./nav.css";
+import { useRouter } from "next/navigation";
 
 interface User {
   id: number;
@@ -15,14 +16,17 @@ interface User {
 
 export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const getUser = async () => {
       try {
         const res = await fetch("/api/protected/me", { method: "GET" });
+        if (res.status === 401) {
+          router.push("/auth");
+        }
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           setUser(data.user);
         }
       } catch (err) {
