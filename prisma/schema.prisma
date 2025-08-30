@@ -44,18 +44,16 @@ model RefreshToken {
   id        Int    @id @default(autoincrement())
   tokenHash String @unique // store a SHA-256 hash of the refresh token
   userId    Int
-  user      User   @relation(fields: [id], references: [id], onDelete: Cascade)
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt    DateTime       @default(now())
   expiresAt    DateTime
   revoked      Boolean        @default(false)
   rotatedAt    DateTime?
-  replacedById Int? // points to the new token after rotation
+  replacedById Int?
   replacedBy   RefreshToken?  @relation("ReplacedBy", fields: [replacedById], references: [id])
-  // inverse side so Prisma is happy
   previous     RefreshToken[] @relation("ReplacedBy")
 
-  // optional session metadata
   userAgent String?
   ipAddress String?
 }
