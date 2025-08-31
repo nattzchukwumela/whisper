@@ -1,4 +1,14 @@
 import React from "react";
+import {
+  Bell,
+  Bookmark,
+  Globe,
+  Home,
+  MessageCircle,
+  Pin,
+  Save,
+  User,
+} from "lucide-react";
 import "./home.css";
 /* CSS styles will be included below */
 
@@ -89,20 +99,40 @@ const Sidebar: React.FC = () => {
     <div className="sidebar">
       <nav className="nav">
         <div className="nav-item active">
-          <span className="nav-icon">🏠</span>
+          <span className="nav-icon">
+            <Home />
+          </span>
           <span className="nav-text">Home</span>
         </div>
         <div className="nav-item">
-          <span className="nav-icon">💬</span>
+          <span className="nav-icon">
+            <MessageCircle />{" "}
+          </span>
           <span className="nav-text">My Messages</span>
         </div>
         <div className="nav-item">
-          <span className="nav-icon">📌</span>
+          <span className="nav-icon">
+            <Bookmark />
+          </span>
           <span className="nav-text">Saved Whispers</span>
         </div>
         <div className="nav-item">
-          <span className="nav-icon">👤</span>
+          <span className="nav-icon">
+            <User />{" "}
+          </span>
           <span className="nav-text">My Profile</span>
+        </div>
+        <div className="nav-item">
+          <span className="nav-icon">
+            <Globe />{" "}
+          </span>
+          <span className="nav-text">Explore</span>
+        </div>
+        <div className="nav-item">
+          <span className="nav-icon">
+            <Bell />{" "}
+          </span>
+          <span className="nav-text">Notification</span>
         </div>
       </nav>
 

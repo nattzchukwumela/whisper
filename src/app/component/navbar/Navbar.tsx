@@ -41,13 +41,13 @@ export default function Navbar() {
           <Link href="/" className="logo">
             Whispers
           </Link>
-          <nav className="main-nav">
+          {/*<nav className="main-nav">
             {links.map((link, index) => (
               <Link href="/" key={index} className="nav-links">
                 {link}
               </Link>
             ))}
-          </nav>
+          </nav>*/}
         </div>
 
         <div className="user-actions">
