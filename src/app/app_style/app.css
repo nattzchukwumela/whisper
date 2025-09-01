@@ -10,14 +10,6 @@
     --search-bg: #21262d; /* Dark gray for search background */
 }
 
-/*body {
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-primary);
-    line-height: 1.5;
-}*/
-
 /* App Container */
 .app-container {
     display: flex;

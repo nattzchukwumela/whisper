@@ -1,0 +1,163 @@
+:root {
+    --background-color: #0d1117;
+    --card-background: #161b22;
+    --primary-blue: #3b82f6;
+    --primary-blue-hover: #2563eb;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --border-color: #30363d;
+    --search-bg: #21262d;
+}
+
+.main-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.whispers-feed {
+    margin-bottom: 16px;
+}
+
+.whisper-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s;
+}
+
+.whisper-card:hover {
+    border-color: var(--primary-blue);
+}
+
+.whisper-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.whisper-content {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.whisper-text {
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.whisper-time {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.whisper-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-left: 52px;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+}
+
+.action-item:hover {
+    background-color: var(--search-bg);
+}
+
+.action-icon {
+    font-size: 16px;
+}
+
+.action-count {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.load-more {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 20px;
+}
+
+.load-more-btn,
+.refresh-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 18px;
+}
+
+.load-more-btn:hover,
+.refresh-btn:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.app-header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.app-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.app-subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 16px;
+    }
+
+    .whisper-actions {
+        padding-left: 0;
+        margin-top: 12px;
+    }
+}

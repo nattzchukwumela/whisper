@@ -3,8 +3,8 @@ import "../app_style/app.css";
 
 import { LeftSidebar } from "../component/Siderbar/LeftSideBar";
 import { RightSidebar } from "../component/Siderbar/RightSideBar";
-import { AnonymousMessageComponent } from "../component/AnonymousMessage/MessageCard";
 import Navbar from "../component/navbar/Navbar";
+import { AnonymousMessageApp } from "../component/AnonymousMessageApp";
 
 /* CSS styles will be included below */
 
@@ -14,7 +14,7 @@ const Anonymous_Messages: React.FC = () => {
       <Navbar />
       <div className="app-container">
         <LeftSidebar activeNav="anonymous_messages" />
-        <AnonymousMessageComponent />
+        <AnonymousMessageApp />
         <RightSidebar />
       </div>
     </>

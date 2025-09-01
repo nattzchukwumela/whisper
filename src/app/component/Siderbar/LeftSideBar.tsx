@@ -1,39 +1,17 @@
 import {
   Bell,
-  Globe,
   Home,
   MessageCircle,
   MessageCircleQuestion,
   Bookmark,
   User,
+  Compass,
 } from "lucide-react";
 import { trendingTopics } from "@/lib/sampleData";
 import Link from "next/link";
 import { activeNavType } from "@/lib/type";
 
 const LeftSidebar: React.FC<activeNavType> = ({ activeNav }) => {
-  function activeNavClass(name: string) {
-    switch (name) {
-      case "home":
-        console.log(name);
-        return activeNav === name ? "active" : "";
-      case "messages":
-        console.log(name);
-        return activeNav === name ? "active" : "";
-      case "anonymous_messages":
-        console.log(name);
-        return activeNav === name ? "active" : "";
-      case "saved_whispers":
-        console.log(name);
-        return activeNav === name ? "active" : "";
-      case "profile":
-        console.log(name);
-        return activeNav === name ? "active" : "";
-      default:
-        return "";
-    }
-  }
-
   return (
     <div className="sidebar">
       <nav className="nav">
@@ -76,7 +54,7 @@ const LeftSidebar: React.FC<activeNavType> = ({ activeNav }) => {
         </div>
         <div className={`nav-item ${activeNav === "explore" ? "active" : ""}`}>
           <span className="nav-icon">
-            <Globe />{" "}
+            <Compass />{" "}
           </span>
           <span className="nav-text">Explore</span>
         </div>
