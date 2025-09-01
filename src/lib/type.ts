@@ -17,3 +17,7 @@ export interface PopularWhisper {
   userInitials: string;
   userColor: string;
 }
+
+export interface activeNavType {
+  activeNav: string;
+}
