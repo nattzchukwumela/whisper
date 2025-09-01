@@ -5,7 +5,6 @@ import {
   MessageCircle,
   MessageCircleQuestion,
   Bookmark,
-  // Save,
   User,
 } from "lucide-react";
 import { trendingTopics } from "@/lib/sampleData";

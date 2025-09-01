@@ -1,16 +1,6 @@
 import React from "react";
-import {
-  Bell,
-  Bookmark,
-  Globe,
-  Home,
-  MessageCircle,
-  MessageCircleQuestion,
-  Pin,
-  Save,
-  User,
-} from "lucide-react";
 import "./home.css";
+
 import { LeftSidebar } from "../Siderbar/LeftSideBar";
 import { MainContent } from "../maincontent/MainContent";
 import { RightSidebar } from "../Siderbar/RightSideBar";

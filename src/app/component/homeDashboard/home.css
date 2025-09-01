@@ -169,7 +169,7 @@
 
 /* Whisper Cards */
 .whispers-feed {
-    space-y: 16px;
+    margin-bottom: 16px;
 }
 
 .whisper-card {
