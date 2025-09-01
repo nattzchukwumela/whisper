@@ -1,4 +1,12 @@
-import { Bell, Globe, Home, MessageCircle, Save, User } from "lucide-react";
+import {
+  Bell,
+  Globe,
+  Home,
+  MessageCircle,
+  MessageCircleQuestion,
+  Save,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 
 const HomeSideBar = () => {
@@ -22,6 +30,9 @@ const HomeSideBar = () => {
         </Link>
         <Link href="">
           <Globe /> <span>Explore</span>
+        </Link>
+        <Link href="">
+          <MessageCircleQuestion /> <span>Anonymous Messages</span>
         </Link>
       </div>
     </div>

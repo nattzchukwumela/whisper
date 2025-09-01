@@ -5,6 +5,7 @@ import {
   Globe,
   Home,
   MessageCircle,
+  MessageCircleQuestion,
   Pin,
   Save,
   User,
@@ -109,6 +110,12 @@ const Sidebar: React.FC = () => {
             <MessageCircle />{" "}
           </span>
           <span className="nav-text">My Messages</span>
+        </div>
+        <div className="nav-item">
+          <span className="nav-icon">
+            <MessageCircleQuestion />{" "}
+          </span>
+          <span className="nav-text">Anonymous Messages</span>
         </div>
         <div className="nav-item">
           <span className="nav-icon">
