@@ -11,7 +11,7 @@ import {
 import { trendingTopics } from "@/lib/sampleData";
 // import Link from "next/link";
 
-const Sidebar: React.FC = () => {
+const LeftSidebar: React.FC = () => {
   return (
     <div className="sidebar">
       <nav className="nav">
@@ -72,4 +72,4 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export { Sidebar };
+export { LeftSidebar };

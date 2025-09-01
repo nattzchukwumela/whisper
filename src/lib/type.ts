@@ -9,3 +9,11 @@ export interface Whisper {
   userInitials: string;
   userColor: string;
 }
+
+export interface PopularWhisper {
+  id: string;
+  content: string;
+  timeAgo: string;
+  userInitials: string;
+  userColor: string;
+}

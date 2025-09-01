@@ -1,4 +1,5 @@
-import { Whisper } from "./type";
+import { PopularWhisper, Whisper } from "./type";
+
 // Sample data
 const whispers: Whisper[] = [
   {
@@ -33,6 +34,31 @@ const whispers: Whisper[] = [
   },
 ];
 
+const popularWhispers: PopularWhisper[] = [
+  {
+    id: "1",
+    content: "I'm so grateful for the little things in life.",
+    timeAgo: "12h ago",
+    userInitials: "u4",
+    userColor: "#3b82f6",
+  },
+  {
+    id: "2",
+    content: "I'm trying to focus on the present moment.",
+    timeAgo: "14h ago",
+    userInitials: "u5",
+    userColor: "#06b6d4",
+  },
+  {
+    id: "3",
+    content: "I'm learning to be kinder to myself.",
+    timeAgo: "16h ago",
+    userInitials: "u6",
+    userColor: "#8b5cf6",
+  },
+];
+
+const emergingCommunities = ["Mental Health", "Self Care", "Gratitude"];
 const trendingTopics = ["venting", "confessions", "lonely"];
 
-export { whispers, trendingTopics };
+export { whispers, trendingTopics, emergingCommunities, popularWhispers };
