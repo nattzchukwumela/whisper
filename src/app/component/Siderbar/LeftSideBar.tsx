@@ -49,7 +49,10 @@ const LeftSidebar: React.FC<activeNavType> = ({ activeNav }) => {
           </span>
           <span className="nav-text">My Messages</span>
         </div>
-        <Link href="/anonymous_message" className="nav-item">
+        <Link
+          href="/anonymous_message"
+          className={`nav-item ${activeNav === "anonymous_messages" ? "active" : ""}`}
+        >
           {/*<div>*/}
           <span className="nav-icon">
             <MessageCircleQuestion />{" "}
