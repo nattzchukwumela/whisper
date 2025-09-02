@@ -10,10 +10,10 @@ const AnonymousMessageSender = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPrivacyDetails, setShowPrivacyDetails] = useState(false);
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const maxLength = 500;
 
-  const handleMessageChange = (e) => {
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     if (text.length <= maxLength) {
       setMessage(text);
@@ -41,7 +41,7 @@ const AnonymousMessageSender = () => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
       handleSubmit();
     }
@@ -168,10 +168,10 @@ const AnonymousMessageSender = () => {
                 disabled={isSubmitting}
                 style={
                   selectedCategory === category.name
-                    ? {
+                    ? ({
                         "--category-color": category.color,
                         "--category-bg": `${category.color}15`,
-                      }
+                      } as React.CSSProperties)
                     : {}
                 }
               >
