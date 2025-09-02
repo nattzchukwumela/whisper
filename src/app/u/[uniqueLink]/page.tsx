@@ -1,9 +1,21 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { categories } from "@/lib/interacts";
+import prisma from "@/lib/prisma";
+
 import "./style.css";
 
-const AnonymousMessageSender = () => {
+const AnonymousMessageSender = async ({
+  params,
+}: {
+  params: { uniqueLink: string };
+}) => {
+  const user = await prisma.user.findUnique({
+    where: { uniqueLink: params.uniqueLink },
+  });
+
+  if (!user) return <div>User not found</div>;
+
   const [message, setMessage] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [charCount, setCharCount] = useState(0);
