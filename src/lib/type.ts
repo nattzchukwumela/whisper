@@ -21,3 +21,18 @@ export interface PopularWhisper {
 export interface activeNavType {
   activeNav: string;
 }
+
+export interface User {
+  id: number;
+  email?: string;
+  uniqueLink: string;
+  name: string;
+  password?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface AnonymousMessageSenderProps {
+  uniqueLink: string;
+  user: User;
+}

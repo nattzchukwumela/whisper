@@ -3,8 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { categories } from "@/lib/interacts";
 
 import "./style.css";
+import { AnonymousMessageSenderProps } from "@/lib/type";
 
-const AnonymousMessageSender = () => {
+const AnonymousMessageSender = ({
+  user,
+  uniqueLink,
+}: AnonymousMessageSenderProps) => {
   const [message, setMessage] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [charCount, setCharCount] = useState(0);
