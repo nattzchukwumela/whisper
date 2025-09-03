@@ -141,6 +141,50 @@ const anonymousMessages = [
   },
 ];
 
+// Anonymous messages data
+const initialMessages = [
+  {
+    id: 1,
+    text: "I'm so tired of pretending to be okay. It's exhausting.",
+    timestamp: "2 hours ago",
+    likes: 1200,
+    bookmarks: 34,
+    category: "venting",
+  },
+  {
+    id: 2,
+    text: "Sometimes I sit in my car after work for 20 minutes just to have a moment of silence before facing everyone at home.",
+    timestamp: "4 hours ago",
+    likes: 856,
+    bookmarks: 67,
+    category: "confessions",
+  },
+  {
+    id: 3,
+    text: "I've been wearing the same hoodie for three days because it still smells like someone who made me feel safe.",
+    timestamp: "6 hours ago",
+    likes: 2341,
+    bookmarks: 189,
+    category: "lonely",
+  },
+  {
+    id: 4,
+    text: "I delete messages before sending them more often than I actually send them. The fear of being too much is paralyzing.",
+    timestamp: "8 hours ago",
+    likes: 1567,
+    bookmarks: 203,
+    category: "venting",
+  },
+  {
+    id: 5,
+    text: "I pretend to be asleep when my roommate comes home so I don't have to explain why I'm crying.",
+    timestamp: "12 hours ago",
+    likes: 934,
+    bookmarks: 78,
+    category: "lonely",
+  },
+];
+
 const emergingCommunities = ["Mental Health", "Self Care", "Gratitude"];
 const trendingTopics = ["venting", "confessions", "lonely"];
 
@@ -157,4 +201,5 @@ export {
   emergingCommunities,
   popularWhispers,
   anonymousMessages,
+  initialMessages,
 };
