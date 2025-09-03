@@ -6,7 +6,7 @@ export async function POST(
   { params }: { params: { uniqueLink: string } },
 ) {
   try {
-    const { data } = await req.json();
+    const { text, category } = await req.json();
 
     // check for user
     const user = await prisma.user.findUnique({
@@ -24,7 +24,8 @@ export async function POST(
     const message = await prisma.anonymousMessage.create({
       data: {
         receiverId: user.id,
-        text: data.text,
+        text,
+        category,
       },
     });
 
