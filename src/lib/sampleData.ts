@@ -144,6 +144,13 @@ const anonymousMessages = [
 const emergingCommunities = ["Mental Health", "Self Care", "Gratitude"];
 const trendingTopics = ["venting", "confessions", "lonely"];
 
+const message = {
+  message:
+    "Lately I’ve been feeling really anxious about the future, but I just needed a safe place to let it out. Writing this makes me feel a little lighter.",
+  category: "anxious",
+  uniqueLink: "test-user-link",
+};
+
 export {
   whispers,
   trendingTopics,

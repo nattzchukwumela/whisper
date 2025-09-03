@@ -5,12 +5,15 @@ import AnonymousMessageSender from "@/app/component/UniqueLinkPageComponent/Anon
 export default async function Page({
   params,
 }: {
-  params: { uniqueLink: string };
+  params: Promise<{ uniqueLink: string }>;
 }) {
+  // Await the params before using its properties
+  const { uniqueLink } = await params;
+
   // Use the 'select' option to explicitly choose which fields to fetch.
   // This is the most efficient and secure way to handle this.
   const user = await prisma.user.findUnique({
-    where: { uniqueLink: params.uniqueLink },
+    where: { uniqueLink: uniqueLink },
     select: {
       id: true,
       name: true,
@@ -24,5 +27,5 @@ export default async function Page({
 
   // The 'user' object now only contains 'id', 'name', and 'uniqueLink',
   // which are the fields explicitly requested.
-  return <AnonymousMessageSender user={user} uniqueLink={params.uniqueLink} />;
+  return <AnonymousMessageSender user={user} uniqueLink={uniqueLink} />;
 }
