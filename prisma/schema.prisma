@@ -33,6 +33,7 @@ model User {
 model AnonymousMessage {
   id        Int      @id @default(autoincrement())
   text      String
+  category  Category
   createdAt DateTime @default(now())
 
   // reference to the receiver (the User who owns the unique link)
@@ -56,4 +57,22 @@ model RefreshToken {
 
   userAgent String?
   ipAddress String?
+}
+
+enum Category {
+  venting
+  confessions
+  lonely
+  grateful
+  anxious
+  happy
+  love
+  friendship
+  work_school
+  random
+  motivational
+  funny
+  sad
+  angry
+  health
 }

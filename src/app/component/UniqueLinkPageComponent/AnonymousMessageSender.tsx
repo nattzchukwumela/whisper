@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { categories } from "@/lib/interacts";
-
-import "./style.css";
+import axios from "axios";
 import { AnonymousMessageSenderProps } from "@/lib/type";
+import "./style.css";
 
 const AnonymousMessageSender = ({
   user,
@@ -28,21 +28,35 @@ const AnonymousMessageSender = ({
 
   const handleSubmit = async () => {
     if (message.trim() && selectedCategory) {
-      setIsSubmitting(true);
+      try {
+        setIsSubmitting(true);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+        const res = await axios.post(`/api/messages/${uniqueLink}`, {
+          text: message,
+          id: user.id,
+          category: selectedCategory,
+        });
 
-      setIsSubmitting(false);
-      setShowSuccess(true);
+        if (res.data.success) {
+          setShowSuccess(true);
 
-      // Reset form after success
-      setTimeout(() => {
-        setMessage("");
-        setSelectedCategory("");
-        setCharCount(0);
-        setShowSuccess(false);
-      }, 3000);
+          // Reset form after success
+          setTimeout(() => {
+            setMessage("");
+            setSelectedCategory("");
+            setCharCount(0);
+            setShowSuccess(false);
+          }, 3000);
+        } else {
+          console.error("Message not sent:", res.data.err);
+          alert("Something went wrong, please try again.");
+        }
+      } catch (err) {
+        console.error("Error sending message:", err);
+        alert("Network or server error. Try again later.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
