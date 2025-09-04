@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { categories } from "@/lib/interacts";
-const AnonymousMessageCard = ({ message }) => {
+import { message } from "@/lib/type";
+
+const AnonymousMessageCard: React.FC<{ message: message }> = ({ message }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [likes, setLikes] = useState(message.likes);
+  const [likes, setLikes] = useState(message.likes || 0);
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {

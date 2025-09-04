@@ -5,10 +5,11 @@ import { AnonymousMessageCard } from "../component/AnonymousMessageCard/Anonymou
 import { ComposeSection } from "../component/AnonymousMessageCard/CompositeSection";
 import { Sidebar } from "../component/AnonymousMessageCard/SideBar";
 import "./page.css";
+import { message, newMessage } from "@/lib/type";
 
 const AnonymousMessagePlatform = () => {
-  const [messages, setMessages] = useState(initialMessages);
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [messages, setMessages] = useState<message[]>(initialMessages);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
   const [showCompose, setShowCompose] = useState(false);
 
   const filteredMessages =
@@ -16,7 +17,7 @@ const AnonymousMessagePlatform = () => {
       ? messages
       : messages.filter((msg) => msg.category === activeFilter);
 
-  const handleSubmitMessage = (newMessage) => {
+  const handleSubmitMessage = (newMessage: newMessage) => {
     const message = {
       id: Date.now(),
       text: newMessage.text,

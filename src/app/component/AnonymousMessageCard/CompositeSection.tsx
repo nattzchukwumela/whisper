@@ -1,8 +1,11 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { categories } from "@/lib/interacts";
+import { sendMessageProp } from "@/lib/type";
 
-const ComposeSection = ({ onSubmit }) => {
+const ComposeSection: React.FC<{ onSubmit: sendMessageProp }> = ({
+  onSubmit,
+}) => {
   const [message, setMessage] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [charCount, setCharCount] = useState(0);
