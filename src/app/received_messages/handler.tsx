@@ -1,0 +1,100 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import { initialMessages } from "@/lib/sampleData";
+import { AnonymousMessageCard } from "../component/AnonymousMessageCard/AnonymousMessageCard";
+import { ComposeSection } from "../component/AnonymousMessageCard/CompositeSection";
+import { Sidebar } from "../component/AnonymousMessageCard/SideBar";
+import "./page.css";
+import { AnonymousMessageSenderProps, message, newMessage } from "@/lib/type";
+import Navbar from "../component/navbar/Navbar";
+
+const AnonymousMessagePlatform = ({
+  user,
+  uniqueLink,
+}: AnonymousMessageSenderProps) => {
+  const [messages, setMessages] = useState<message[]>(initialMessages);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [showCompose, setShowCompose] = useState(false);
+
+  useEffect(() => {
+    async function getAnonymousMessages() {
+      try {
+        const res = await fetch("/api/messages/recieved/", { method: "GET" });
+        if (res.ok) {
+          const data = await res.json();
+          console.log(data);
+        } else {
+          console.error("Failed to fetch profile");
+        }
+      } catch (err) {
+        console.error("Failed to fetch profile", err);
+      }
+    }
+    getAnonymousMessages();
+  }, []);
+
+  const filteredMessages =
+    activeFilter === "all"
+      ? messages
+      : messages.filter((msg) => msg.category === activeFilter);
+
+  const handleSubmitMessage = (newMessage: newMessage) => {
+    const message = {
+      id: Date.now(),
+      text: newMessage.text,
+      category: newMessage.category,
+      timestamp: "just now",
+      likes: 0,
+      bookmarks: 0,
+    };
+
+    setMessages([message, ...messages]);
+    setShowCompose(false);
+
+    // Show success notification
+    setTimeout(() => {
+      alert("Your anonymous message has been shared! 🎉");
+    }, 100);
+  };
+
+  return (
+    <>
+      <div className="app-container">
+        {/*<Navbar />*/}
+        <Sidebar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+
+        <div className="main-content">
+          {showCompose && <ComposeSection onSubmit={handleSubmitMessage} />}
+
+          <div className="messages-feed">
+            {filteredMessages.map((message) => (
+              <AnonymousMessageCard key={message.id} message={message} />
+            ))}
+
+            {filteredMessages.length === 0 && (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "40px",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                No messages in this category yet. Be the first to share!
+              </div>
+            )}
+          </div>
+        </div>
+
+        <button
+          className="compose-toggle"
+          onClick={() => setShowCompose(!showCompose)}
+          title={showCompose ? "Close compose" : "Write anonymous message"}
+        >
+          {showCompose ? "×" : "+"}
+        </button>
+      </div>
+    </>
+  );
+};
+
+export { AnonymousMessagePlatform };

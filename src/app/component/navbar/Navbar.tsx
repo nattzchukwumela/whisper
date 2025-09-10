@@ -1,12 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import { links } from "../../../lib/interacts";
 import { getInitials } from "@/util/getInitials";
 import "./nav.css";
-import { useRouter } from "next/navigation";
 import { fetchWithAuth } from "@/util/fetchWithAuth";
 
 interface User {
@@ -17,7 +14,6 @@ interface User {
 
 export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const getUser = async () => {

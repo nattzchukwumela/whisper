@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import UserNotFound from "../component/UniqueLinkPageComponent/UserNotFound";
-import { AnonymousMessagePlatform } from "./handler";
+import AnonymousMessageSender from "../component/UniqueLinkPageComponent/AnonymousMessageSender";
 
 export default async function Page({
   params,
@@ -27,5 +27,5 @@ export default async function Page({
 
   // The 'user' object now only contains 'id', 'name', and 'uniqueLink',
   // which are the fields explicitly needed.
-  return <AnonymousMessagePlatform user={user} uniqueLink={uniqueLink} />;
+  return <AnonymousMessageSender user={user} uniqueLink={uniqueLink} />;
 }

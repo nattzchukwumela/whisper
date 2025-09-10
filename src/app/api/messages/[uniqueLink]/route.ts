@@ -7,7 +7,6 @@ export async function POST(
 ) {
   try {
     const { text, category } = await req.json();
-    console.log(params.uniqueLink);
     // check for user
     const user = await prisma.user.findUnique({
       where: { uniqueLink: params.uniqueLink },
