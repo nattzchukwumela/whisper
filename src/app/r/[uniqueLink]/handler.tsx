@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { initialMessages } from "@/lib/sampleData";
-import { AnonymousMessageCard } from "../component/AnonymousMessageCard/AnonymousMessageCard";
-import { ComposeSection } from "../component/AnonymousMessageCard/CompositeSection";
-import { Sidebar } from "../component/AnonymousMessageCard/SideBar";
+import { AnonymousMessageCard } from "../../component/AnonymousMessageCard/AnonymousMessageCard";
+import { ComposeSection } from "../../component/AnonymousMessageCard/CompositeSection";
+import { Sidebar } from "../../component/AnonymousMessageCard/SideBar";
 import "./page.css";
 import { AnonymousMessageSenderProps, message, newMessage } from "@/lib/type";
-import Navbar from "../component/navbar/Navbar";
+import Navbar from "../../component/navbar/Navbar";
 
 const AnonymousMessagePlatform = ({
   user,
