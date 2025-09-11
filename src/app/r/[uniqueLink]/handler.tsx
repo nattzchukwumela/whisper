@@ -19,7 +19,7 @@ const AnonymousMessagePlatform = ({
   useEffect(() => {
     async function getAnonymousMessages() {
       try {
-        const res = await fetch(`/api/messages/recieved/${uniqueLink}`, {
+        const res = await fetch(`/api/messages/received/${uniqueLink}`, {
           method: "GET",
         });
         if (res.ok) {
