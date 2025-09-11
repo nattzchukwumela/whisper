@@ -25,6 +25,7 @@ const AnonymousMessagePlatform = ({
         if (res.ok) {
           const data = await res.json();
           console.log(data);
+          setMessages(data?.data);
         } else {
           console.error("Failed to fetch profile");
         }

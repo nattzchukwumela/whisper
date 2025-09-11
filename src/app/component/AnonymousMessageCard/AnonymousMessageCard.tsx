@@ -59,13 +59,13 @@ const AnonymousMessageCard: React.FC<{ message: message }> = ({ message }) => {
       </div>
 
       <div className="message-actions">
-        <button
+        {/*<button
           className={`action-btn ${isLiked ? "liked" : ""}`}
           onClick={handleLike}
         >
           <span className="action-icon">♥</span>
           <span className="action-count">{likes.toLocaleString()}</span>
-        </button>
+        </button>*/}
 
         <button
           className={`action-btn ${isBookmarked ? "bookmarked" : ""}`}
