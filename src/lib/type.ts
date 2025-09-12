@@ -48,10 +48,25 @@ export interface message {
 
 export type newMessage = {
   id?: number;
-  text: string;
+  content: string;
   category: string;
   timestamp?: string;
 };
+
+export interface cat {
+  name: string;
+  emoji: string;
+  color: string;
+}
+
+export interface message {
+  id: number;
+  category: string;
+  text: string;
+  timestamp: string;
+}
+
+export type platformsTypes = "Twitter" | "Copy Link" | "WhatsApp" | "Facebook";
 
 export type SideBarProps = {
   activeFilter: string;

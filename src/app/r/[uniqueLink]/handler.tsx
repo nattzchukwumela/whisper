@@ -17,53 +17,48 @@ import {
   Link,
 } from "lucide-react";
 import { categories } from "@/lib/interacts";
+import { message, platformsTypes } from "@/lib/type";
 
 const WhispersMessagesPage = () => {
   const [isDark, setIsDark] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All Messages");
-  const [shareMenuOpen, setShareMenuOpen] = useState(null);
+  const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
 
-  const messages = [
+  const messages: message[] = [
     {
       id: 1,
       category: "venting",
-      content:
-        "I'm so frustrated with my job. It's like I'm constantly hitting a wall, and no matter how hard I try, I can't seem to make any progress. It's exhausting and demoralizing.",
+      text: "I'm so frustrated with my job. It's like I'm constantly hitting a wall, and no matter how hard I try, I can't seem to make any progress. It's exhausting and demoralizing.",
       timestamp: "2 hours ago",
     },
     {
       id: 2,
       category: "confessions",
-      content:
-        "I have a secret crush on my best friend's sibling. It's been going on for months, and I can't seem to shake it. I know it's wrong, but I can't help how I feel.",
+      text: "I have a secret crush on my best friend's sibling. It's been going on for months, and I can't seem to shake it. I know it's wrong, but I can't help how I feel.",
       timestamp: "4 hours ago",
     },
     {
       id: 3,
       category: "lonely",
-      content:
-        "I feel so alone sometimes. It's like I'm surrounded by people, but I still feel like an outsider. I wish I could find someone who truly understands me.",
+      text: "I feel so alone sometimes. It's like I'm surrounded by people, but I still feel like an outsider. I wish I could find someone who truly understands me.",
       timestamp: "6 hours ago",
     },
     {
       id: 4,
       category: "love",
-      content:
-        "My partner and I have been drifting apart lately. We used to be so close, but now it feels like we're living separate lives. I'm not sure how to fix it.",
+      text: "My partner and I have been drifting apart lately. We used to be so close, but now it feels like we're living separate lives. I'm not sure how to fix it.",
       timestamp: "8 hours ago",
     },
     {
       id: 5,
       category: "anxious",
-      content:
-        "I have a big presentation tomorrow and I can't sleep. My mind keeps racing with all the things that could go wrong. Why do I always do this to myself?",
+      text: "I have a big presentation tomorrow and I can't sleep. My mind keeps racing with all the things that could go wrong. Why do I always do this to myself?",
       timestamp: "12 hours ago",
     },
     {
       id: 6,
       category: "grateful",
-      content:
-        "Today someone held the door for me when I was struggling with groceries. Such a small act, but it completely changed my mood. Sometimes kindness is everything.",
+      text: "Today someone held the door for me when I was struggling with groceries. Such a small act, but it completely changed my mood. Sometimes kindness is everything.",
       timestamp: "1 day ago",
     },
   ];
@@ -84,13 +79,13 @@ const WhispersMessagesPage = () => {
     setIsDark(!isDark);
   };
 
-  const getCategoryInfo = (categoryName) => {
+  const getCategoryInfo = (categoryName: string) => {
     return categories.find((cat) => cat.name === categoryName) || categories[0];
   };
 
-  const handleShare = (messageId, platform) => {
+  const handleShare = (messageId: number, platform: platformsTypes) => {
     const message = messages.find((m) => m.id === messageId);
-    const shareText = `"${message.content}" - Anonymous message from Whispers`;
+    const shareText = `"${message?.text}" - Anonymous message from Whispers`;
     const shareUrl = `${window.location.origin}/message/${messageId}`;
 
     switch (platform) {
@@ -116,7 +111,7 @@ const WhispersMessagesPage = () => {
     setShareMenuOpen(null);
   };
 
-  const handleDownloadImage = (messageId) => {
+  const handleDownloadImage = (messageId: number) => {
     // Placeholder for download functionality
     console.log(`Download image for message ${messageId}`);
     // You'll implement this with html2canvas or similar
@@ -143,7 +138,9 @@ const WhispersMessagesPage = () => {
                 key={category.name}
                 className={`nav-item ${selectedCategory === category.name ? "active" : ""}`}
                 onClick={() => setSelectedCategory(category.name)}
-                style={{ "--category-color": category.color }}
+                style={
+                  { "--category-color": category.color } as React.CSSProperties
+                }
               >
                 <span className="nav-emoji">{category.emoji}</span>
                 <span className="nav-text">
@@ -180,7 +177,11 @@ const WhispersMessagesPage = () => {
                 <div key={message.id} className="message-wrapper">
                   <div
                     className="message-card"
-                    style={{ "--message-color": categoryInfo.color }}
+                    style={
+                      {
+                        "--message-color": categoryInfo.color,
+                      } as React.CSSProperties
+                    }
                   >
                     <div className="message-header">
                       <div className="category-badge">
@@ -217,11 +218,16 @@ const WhispersMessagesPage = () => {
                                     key={platform.name}
                                     className="share-option"
                                     onClick={() =>
-                                      handleShare(message.id, platform.name)
+                                      handleShare(
+                                        message.id,
+                                        platform.name as platformsTypes,
+                                      )
                                     }
-                                    style={{
-                                      "--platform-color": platform.color,
-                                    }}
+                                    style={
+                                      {
+                                        "--platform-color": platform.color,
+                                      } as React.CSSProperties
+                                    }
                                   >
                                     <IconComponent size={16} />
                                     <span>{platform.name}</span>
@@ -239,7 +245,7 @@ const WhispersMessagesPage = () => {
                         </button>
                       </div>
                     </div>
-                    <p className="message-content">{message.content}</p>
+                    <p className="message-content">{message.text}</p>
                     <div className="message-footer">
                       <span className="timestamp">{message.timestamp}</span>
                     </div>
