@@ -66,11 +66,10 @@ export interface messagesTypes {
   createdAt: string;
 }
 
-// interface User {
-//   id: number;
-//   name: string;
-//   email: string;
-// }
+export type WhispersUIProps = {
+  user: User;
+  link: string;
+};
 
 export type platformsTypes = "Twitter" | "Copy Link" | "WhatsApp" | "Facebook";
 

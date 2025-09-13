@@ -4,10 +4,12 @@ import HomePage from "./landing_page/LandingPage";
 import { fetchWithAuth } from "@/util/fetchWithAuth";
 import { User } from "@/lib/type";
 import WhispersUI from "./dashboard/page";
+import { HashLoader } from "react-spinners";
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const fullUrl = typeof window !== "undefined" ? window.location.href : "";
 
   useEffect(() => {
     const getUser = async () => {
@@ -26,8 +28,6 @@ export default function Home() {
     getUser();
   }, []);
 
-  if (loading) return <div>Loading...</div>; // or spinner
-  return user ? <WhispersUI /> : <HomePage />;
-
-  return <>{user ? <WhispersUI /> : <HomePage />}</>;
+  if (loading) return <HashLoader color="#3498db" size={80} />; // or spinner
+  return user ? <WhispersUI user={user} link={fullUrl} /> : <HomePage />;
 }
