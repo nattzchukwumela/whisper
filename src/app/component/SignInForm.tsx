@@ -30,7 +30,7 @@ export default function SignInForm() {
       console.log("Login success:", res.data);
 
       // TODO: handle redirect, store session, etc.
-      router.push("/dashboard");
+      router.push("/");
     } catch (err: any) {
       if (axios.isAxiosError(err)) {
         // API responded but with error (e.g., 401 Unauthorized)

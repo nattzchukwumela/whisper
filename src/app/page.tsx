@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import HomePage from "./landing_page/LandingPage";
 import { fetchWithAuth } from "@/util/fetchWithAuth";
 import { User } from "@/lib/type";
-import WhispersUI from "./dashboard/page";
+import WhispersUI from "./dashboard/home";
 import { HashLoader } from "react-spinners";
 
 export default function Home() {

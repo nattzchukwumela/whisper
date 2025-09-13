@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Copy, Mail, User, Moon, Sun } from "lucide-react";
 import "./style.css";
 import { WhispersUIProps } from "@/lib/type";
+import Link from "next/link";
 
 const WhispersUI = ({ user, link }: WhispersUIProps) => {
   const [isDark, setIsDark] = useState(true);
@@ -79,13 +80,13 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
           {/* Messages Button */}
           <div className="messages-section">
             <button className="messages-button">
-              <link href={`${link}r/${user.uniqueLink}`}>
+              <Link href={`${link}r/${user.uniqueLink}`}>
                 <Mail size={20} />
                 View My Anonymous Messages
                 {messageCount > 0 && (
                   <span className="message-badge">{messageCount}</span>
                 )}
-              </link>
+              </Link>
             </button>
           </div>
         </div>

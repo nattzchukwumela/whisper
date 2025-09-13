@@ -24,31 +24,36 @@ async function refreshAccessToken() {
 }
 
 export async function fetchWithAuth(url: string, options: RequestInit = {}) {
-  let res = await fetch(url, {
-    ...options,
-    credentials: "include", // send cookies (refresh token cookie)
-    headers: {
-      ...options.headers,
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
+  let token = localStorage.getItem("accessToken");
 
+  const headers = {
+    ...options.headers,
+    Authorization: token ? `Bearer ${token}` : "",
+  };
+
+  let res = await fetch(url, { ...options, headers });
+
+  // If access token expired, attempt refresh
   if (res.status === 401) {
-    try {
-      const newToken = await refreshAccessToken();
-      localStorage.setItem("accessToken", newToken);
+    const refreshToken = localStorage.getItem("refreshToken");
 
-      res = await fetch(url, {
-        ...options,
-        credentials: "include",
-        headers: {
-          ...options.headers,
-          Authorization: `Bearer ${newToken}`,
-        },
+    if (refreshToken) {
+      const refreshRes = await fetch("/api/auth/refresh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refreshToken }),
       });
-    } catch (err) {
-      console.error("Session expired, redirect to login", err);
-      window.location.href = "/auth"; // fallback
+
+      if (refreshRes.ok) {
+        const data = await refreshRes.json();
+        localStorage.setItem("accessToken", data.accessToken);
+
+        // Retry the original request with new token
+        res = await fetch(url, {
+          ...options,
+          headers: { ...headers, Authorization: `Bearer ${data.accessToken}` },
+        });
+      }
     }
   }
 
