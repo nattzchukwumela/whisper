@@ -49,7 +49,7 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
               <User size={18} className="input-icon" />
               <input
                 type="text"
-                value={username}
+                value={user.name}
                 onChange={(e) => setUsername(e.target.value)}
                 className="username-field"
               />

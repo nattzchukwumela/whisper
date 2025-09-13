@@ -28,6 +28,6 @@ export default function Home() {
     getUser();
   }, []);
 
-  if (loading) return <HashLoader color="#3498db" size={80} />; // or spinner
+  if (loading) return <HashLoader color="#3498db" size={80} />;
   return user ? <WhispersUI user={user} link={fullUrl} /> : <HomePage />;
 }
