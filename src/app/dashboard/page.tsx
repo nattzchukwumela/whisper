@@ -10,7 +10,7 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
   const [copied, setCopied] = useState(false);
   const [messageCount] = useState(12);
 
-  const specialLink = `${link}/u/received/${user.uniqueLink}`;
+  const specialLink = `${link}u/${user.uniqueLink}`;
 
   const handleCopyLink = async () => {
     try {
@@ -79,18 +79,20 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
           {/* Messages Button */}
           <div className="messages-section">
             <button className="messages-button">
-              <Mail size={20} />
-              View My Anonymous Messages
-              {messageCount > 0 && (
-                <span className="message-badge">{messageCount}</span>
-              )}
+              <link href={`${link}r/${user.uniqueLink}`}>
+                <Mail size={20} />
+                View My Anonymous Messages
+                {messageCount > 0 && (
+                  <span className="message-badge">{messageCount}</span>
+                )}
+              </link>
             </button>
           </div>
         </div>
 
         {/* Footer */}
         <footer className="footer">
-          © 2023 Whispers. All rights reserved.
+          © 2025 Whispers. All rights reserved.
         </footer>
       </div>
     </div>
