@@ -160,7 +160,7 @@
 }
 
 .link-container {
-    space-y: 12px;
+    margin-block: 12px;
 }
 
 .link-display {

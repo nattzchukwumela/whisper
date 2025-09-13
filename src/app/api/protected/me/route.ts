@@ -34,7 +34,7 @@ export async function GET(req: Request) {
     };
 
     const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
+      where: { id: Number(decoded.userId) },
       select: { id: true, email: true, name: true }, // safe fields only
     });
 

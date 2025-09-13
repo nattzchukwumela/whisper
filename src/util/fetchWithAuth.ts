@@ -24,38 +24,21 @@ async function refreshAccessToken() {
 }
 
 export async function fetchWithAuth(url: string, options: RequestInit = {}) {
-  let token = localStorage.getItem("accessToken");
+  let res = await fetch(url, { ...options, credentials: "include" });
 
-  const headers = {
-    ...options.headers,
-    Authorization: token ? `Bearer ${token}` : "",
-  };
-
-  let res = await fetch(url, { ...options, headers });
-
-  // If access token expired, attempt refresh
   if (res.status === 401) {
-    const refreshToken = localStorage.getItem("refreshToken");
+    // try refresh
+    const refreshRes = await fetch("/api/auth/refresh", {
+      method: "POST",
+      credentials: "include",
+    });
 
-    if (refreshToken) {
-      const refreshRes = await fetch("/api/auth/refresh", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ refreshToken }),
-      });
-
-      if (refreshRes.ok) {
-        const data = await refreshRes.json();
-        localStorage.setItem("accessToken", data.accessToken);
-
-        // Retry the original request with new token
-        res = await fetch(url, {
-          ...options,
-          headers: { ...headers, Authorization: `Bearer ${data.accessToken}` },
-        });
-      }
+    const refreshData = await refreshRes.json();
+    if (refreshRes.ok && refreshData.success) {
+      // retry original request
+      res = await fetch(url, { ...options, credentials: "include" });
     }
   }
 
-  return res;
+  return res.json();
 }
