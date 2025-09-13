@@ -18,7 +18,7 @@ export async function GET(req: Request) {
     const payload = verifyAccessToken(access);
     const user = await prisma.user.findUnique({
       where: { id: payload.userId },
-      select: { id: true, name: true, email: true },
+      select: { id: true, name: true, uniqueLink: true },
     });
 
     if (!user) {

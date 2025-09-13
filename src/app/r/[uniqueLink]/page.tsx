@@ -33,9 +33,5 @@ export default async function Page({
 
   // The 'user' object now only contains 'id', 'name', and 'uniqueLink',
   // which are the fields explicitly needed.
-  return (
-    <WhispersMessagesPage
-    // user={user} uniqueLink={uniqueLink}
-    />
-  );
+  return <WhispersMessagesPage user={user} uniqueLink={uniqueLink} />;
 }

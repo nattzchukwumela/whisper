@@ -1,13 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Copy, Mail, User, Moon, Sun } from "lucide-react";
 import "./style.css";
+import { fetchWithAuth } from "@/util/fetchWithAuth";
+import { User as user } from "@/lib/type";
 
 const WhispersUI = () => {
   const [isDark, setIsDark] = useState(true);
   const [username, setUsername] = useState("SilentSpecter23");
   const [copied, setCopied] = useState(false);
   const [messageCount] = useState(12);
+  const [user, setUser] = useState<user | null>(null);
+
+  const fullUrl = typeof window !== "undefined" ? window.location.href : "";
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await fetchWithAuth("/api/protected/me", { method: "GET" });
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user);
+        }
+      } catch (err) {
+        console.error("Failed to fetch user", err);
+      }
+    };
+    getUser();
+  }, []);
 
   const specialLink = `https://whispers.com/u/${username}`;
 

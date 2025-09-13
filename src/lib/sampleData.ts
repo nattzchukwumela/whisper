@@ -1,4 +1,4 @@
-import { PopularWhisper, Whisper } from "./type";
+import { messagesTypes, PopularWhisper, Whisper } from "./type";
 
 // Sample data
 const whispers: Whisper[] = [
@@ -62,7 +62,7 @@ const anonymousMessages = [
   {
     id: 1,
     text: "I'm so tired of pretending to be okay. It's exhausting.",
-    timestamp: "Jan 22, 2024",
+    createdAt: "Jan 22, 2024",
     likes: 1200,
     bookmarks: 34,
     category: "venting",
@@ -70,7 +70,7 @@ const anonymousMessages = [
   {
     id: 2,
     text: "Sometimes I sit in my car after work for 20 minutes just to have a moment of silence before facing everyone at home.",
-    timestamp: "Jan 21, 2024",
+    createdAt: "Jan 21, 2024",
     likes: 856,
     bookmarks: 67,
     category: "confessions",
@@ -78,7 +78,7 @@ const anonymousMessages = [
   {
     id: 3,
     text: "I've been wearing the same hoodie for three days because it still smells like someone who made me feel safe.",
-    timestamp: "Jan 21, 2024",
+    createdAt: "Jan 21, 2024",
     likes: 2341,
     bookmarks: 189,
     category: "lonely",
@@ -86,7 +86,7 @@ const anonymousMessages = [
   {
     id: 4,
     text: "I delete messages before sending them more often than I actually send them. The fear of being too much is paralyzing.",
-    timestamp: "Jan 20, 2024",
+    createdAt: "Jan 20, 2024",
     likes: 1567,
     bookmarks: 203,
     category: "venting",
@@ -94,7 +94,7 @@ const anonymousMessages = [
   {
     id: 5,
     text: "I pretend to be asleep when my roommate comes home so I don't have to explain why I'm crying.",
-    timestamp: "Jan 20, 2024",
+    createdAt: "Jan 20, 2024",
     likes: 934,
     bookmarks: 78,
     category: "lonely",
@@ -102,7 +102,7 @@ const anonymousMessages = [
   {
     id: 6,
     text: "I've been secretly taking care of a stray cat for months. It's the highlight of my day but I can't tell anyone because pets aren't allowed in my building.",
-    timestamp: "Jan 19, 2024",
+    createdAt: "Jan 19, 2024",
     likes: 3422,
     bookmarks: 445,
     category: "confessions",
@@ -110,7 +110,7 @@ const anonymousMessages = [
   {
     id: 7,
     text: "Every time someone asks 'How are you?' I want to scream. But I just say 'fine' and smile.",
-    timestamp: "Jan 19, 2024",
+    createdAt: "Jan 19, 2024",
     likes: 2108,
     bookmarks: 156,
     category: "venting",
@@ -118,7 +118,7 @@ const anonymousMessages = [
   {
     id: 8,
     text: "I still check their social media every day even though we broke up 6 months ago. I know it's not healthy but I can't stop.",
-    timestamp: "Jan 18, 2024",
+    createdAt: "Jan 18, 2024",
     likes: 1789,
     bookmarks: 234,
     category: "confessions",
@@ -126,7 +126,7 @@ const anonymousMessages = [
   {
     id: 9,
     text: "I eat lunch alone in my car because the break room feels too overwhelming. Everyone seems to have their groups.",
-    timestamp: "Jan 18, 2024",
+    createdAt: "Jan 18, 2024",
     likes: 1456,
     bookmarks: 98,
     category: "lonely",
@@ -134,7 +134,7 @@ const anonymousMessages = [
   {
     id: 10,
     text: "I practice conversations in the mirror before important meetings because I'm terrified of saying the wrong thing.",
-    timestamp: "Jan 17, 2024",
+    createdAt: "Jan 17, 2024",
     likes: 1823,
     bookmarks: 167,
     category: "venting",
@@ -146,7 +146,7 @@ const initialMessages = [
   {
     id: 1,
     text: "I'm so tired of pretending to be okay. It's exhausting.",
-    timestamp: "2 hours ago",
+    createdAt: "2 hours ago",
     likes: 1200,
     bookmarks: 34,
     category: "venting",
@@ -154,7 +154,7 @@ const initialMessages = [
   {
     id: 2,
     text: "Sometimes I sit in my car after work for 20 minutes just to have a moment of silence before facing everyone at home.",
-    timestamp: "4 hours ago",
+    createdAt: "4 hours ago",
     likes: 856,
     bookmarks: 67,
     category: "confessions",
@@ -162,7 +162,7 @@ const initialMessages = [
   {
     id: 3,
     text: "I've been wearing the same hoodie for three days because it still smells like someone who made me feel safe.",
-    timestamp: "6 hours ago",
+    createdAt: "6 hours ago",
     likes: 2341,
     bookmarks: 189,
     category: "lonely",
@@ -170,7 +170,7 @@ const initialMessages = [
   {
     id: 4,
     text: "I delete messages before sending them more often than I actually send them. The fear of being too much is paralyzing.",
-    timestamp: "8 hours ago",
+    createdAt: "8 hours ago",
     likes: 1567,
     bookmarks: 203,
     category: "venting",
@@ -178,10 +178,49 @@ const initialMessages = [
   {
     id: 5,
     text: "I pretend to be asleep when my roommate comes home so I don't have to explain why I'm crying.",
-    timestamp: "12 hours ago",
+    createdAt: "12 hours ago",
     likes: 934,
     bookmarks: 78,
     category: "lonely",
+  },
+];
+
+const messages: messagesTypes[] = [
+  {
+    id: 1,
+    category: "venting",
+    text: "I'm so frustrated with my job. It's like I'm constantly hitting a wall, and no matter how hard I try, I can't seem to make any progress. It's exhausting and demoralizing.",
+    createdAt: "2 hours ago",
+  },
+  {
+    id: 2,
+    category: "confessions",
+    text: "I have a secret crush on my best friend's sibling. It's been going on for months, and I can't seem to shake it. I know it's wrong, but I can't help how I feel.",
+    createdAt: "4 hours ago",
+  },
+  {
+    id: 3,
+    category: "lonely",
+    text: "I feel so alone sometimes. It's like I'm surrounded by people, but I still feel like an outsider. I wish I could find someone who truly understands me.",
+    createdAt: "6 hours ago",
+  },
+  {
+    id: 4,
+    category: "love",
+    text: "My partner and I have been drifting apart lately. We used to be so close, but now it feels like we're living separate lives. I'm not sure how to fix it.",
+    createdAt: "8 hours ago",
+  },
+  {
+    id: 5,
+    category: "anxious",
+    text: "I have a big presentation tomorrow and I can't sleep. My mind keeps racing with all the things that could go wrong. Why do I always do this to myself?",
+    createdAt: "12 hours ago",
+  },
+  {
+    id: 6,
+    category: "grateful",
+    text: "Today someone held the door for me when I was struggling with groceries. Such a small act, but it completely changed my mood. Sometimes kindness is everything.",
+    createdAt: "1 day ago",
   },
 ];
 
@@ -202,4 +241,5 @@ export {
   popularWhispers,
   anonymousMessages,
   initialMessages,
+  messages,
 };

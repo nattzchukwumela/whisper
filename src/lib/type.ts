@@ -59,12 +59,18 @@ export interface cat {
   color: string;
 }
 
-export interface message {
+export interface messagesTypes {
   id: number;
   category: string;
   text: string;
-  timestamp: string;
+  createdAt: string;
 }
+
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
 
 export type platformsTypes = "Twitter" | "Copy Link" | "WhatsApp" | "Facebook";
 

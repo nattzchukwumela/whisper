@@ -44,7 +44,7 @@ export async function GET(
       {
         success: true,
         message: "Messages retrieved",
-        data: messages,
+        messageData: messages,
       },
       { status: 200 },
     );
