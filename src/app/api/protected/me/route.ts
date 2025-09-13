@@ -1,41 +1,36 @@
 import { NextResponse } from "next/server";
+import { verifyAccessToken } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import jwt from "jsonwebtoken";
 
 export async function GET(req: Request) {
-  const cookieHeader = req.headers.get("cookie");
-  if (!cookieHeader) {
-    return NextResponse.json(
-      { success: false, error: "No cookies" },
-      { status: 401 },
-    );
-  }
-
-  // parse cookies manually (App Router req.headers.get)
+  const cookieHeader = req.headers.get("cookie") || "";
   const cookies = Object.fromEntries(
     cookieHeader.split(";").map((c) => {
-      const [key, ...v] = c.trim().split("=");
-      return [key, decodeURIComponent(v.join("="))];
+      const [k, ...v] = c.trim().split("=");
+      return [k, decodeURIComponent(v.join("="))];
     }),
   );
 
-  const token = cookies["access_token"];
-  if (!token) {
+  const accessToken = cookies["access_token"];
+  if (!accessToken) {
     return NextResponse.json(
-      { success: false, error: "Missing access token" },
+      { success: false, error: "No access token found" },
       { status: 401 },
     );
   }
 
   try {
-    // verify JWT (use same secret as in signAccessToken)
-    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!) as {
-      userId: string;
-    };
+    const payload = verifyAccessToken(accessToken);
 
+    // fetch user details from Prisma
     const user = await prisma.user.findUnique({
-      where: { id: Number(decoded.userId) },
-      select: { id: true, email: true, name: true }, // safe fields only
+      where: { id: payload.userId },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        uniqueLink: true,
+      },
     });
 
     if (!user) {
@@ -47,8 +42,9 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ success: true, user });
   } catch (err) {
+    console.error("Access token invalid:", err);
     return NextResponse.json(
-      { success: false, error: "Invalid or expired token" },
+      { success: false, error: "Invalid or expired access token" },
       { status: 401 },
     );
   }

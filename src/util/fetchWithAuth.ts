@@ -27,7 +27,6 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   let res = await fetch(url, { ...options, credentials: "include" });
 
   if (res.status === 401) {
-    // try refresh
     const refreshRes = await fetch("/api/auth/refresh", {
       method: "POST",
       credentials: "include",
@@ -35,10 +34,9 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
 
     const refreshData = await refreshRes.json();
     if (refreshRes.ok && refreshData.success) {
-      // retry original request
       res = await fetch(url, { ...options, credentials: "include" });
     }
   }
 
-  return res.json();
+  return res.json(); // <--- returns JSON, not Response
 }

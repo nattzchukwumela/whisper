@@ -14,10 +14,12 @@ export default function Home() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetchWithAuth("/api/protected/me", { method: "GET" });
-        if (res.ok) {
-          const data = await res.json();
+        const data = await fetchWithAuth("/api/protected/me", {
+          method: "GET",
+        });
+        if (data.success) {
           setUser(data.user);
+          console.log(data.user, "user");
         }
       } catch (err) {
         console.error("Failed to fetch user", err);
