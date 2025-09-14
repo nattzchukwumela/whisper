@@ -79,15 +79,16 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
 
           {/* Messages Button */}
           <div className="messages-section">
-            <button className="messages-button">
-              <Link href={`${link}r/${user.uniqueLink}`}>
-                <Mail size={20} />
-                View My Anonymous Messages
-                {messageCount > 0 && (
-                  <span className="message-badge">{messageCount}</span>
-                )}
-              </Link>
-            </button>
+            <Link
+              className="messages-button"
+              href={`${link}r/${user.uniqueLink}`}
+            >
+              <Mail size={20} />
+              View My Anonymous Messages
+              {messageCount > 0 && (
+                <span className="message-badge">{messageCount}</span>
+              )}
+            </Link>
           </div>
         </div>
 
