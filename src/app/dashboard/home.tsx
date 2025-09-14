@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const WhispersUI = ({ user, link }: WhispersUIProps) => {
   const [isDark, setIsDark] = useState(true);
-  const [username, setUsername] = useState("SilentSpecter23");
   const [copied, setCopied] = useState(false);
   const [messageCount] = useState(12);
 
@@ -48,12 +47,7 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
             <label className="input-label">Your Username</label>
             <div className="username-input">
               <User size={18} className="input-icon" />
-              <input
-                type="text"
-                value={user.name}
-                onChange={(e) => setUsername(e.target.value)}
-                className="username-field"
-              />
+              <input type="text" value={user.name} className="username-field" />
             </div>
           </div>
 

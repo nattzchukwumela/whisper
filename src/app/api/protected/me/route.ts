@@ -30,6 +30,11 @@ export async function GET(req: Request) {
         email: true,
         name: true,
         uniqueLink: true,
+        _count: {
+          select: {
+            messages: true,
+          },
+        },
       },
     });
 
