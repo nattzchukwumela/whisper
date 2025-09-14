@@ -26,6 +26,9 @@ export interface User {
   id: number;
   email?: string;
   uniqueLink: string;
+  _count?: {
+    messages: number;
+  };
   name: string;
   password?: string;
   createdAt?: Date;

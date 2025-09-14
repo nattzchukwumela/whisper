@@ -8,7 +8,7 @@ import Link from "next/link";
 const WhispersUI = ({ user, link }: WhispersUIProps) => {
   const [isDark, setIsDark] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [messageCount] = useState(12);
+  const [messageCount, setMessageCount] = useState(0);
 
   const specialLink = `${link}u/${user.uniqueLink}`;
 
@@ -22,6 +22,9 @@ const WhispersUI = ({ user, link }: WhispersUIProps) => {
     }
   };
 
+  useEffect(() => {
+    setMessageCount(user._count?.messages || 0);
+  });
   const toggleTheme = () => {
     setIsDark(!isDark);
   };

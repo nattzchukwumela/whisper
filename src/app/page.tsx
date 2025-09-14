@@ -19,7 +19,6 @@ export default function Home() {
         });
         if (data.success) {
           setUser(data.user);
-          console.log(data.user, "user");
         }
       } catch (err) {
         console.error("Failed to fetch user", err);
