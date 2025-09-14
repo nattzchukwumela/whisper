@@ -251,7 +251,8 @@
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+    /*overflow: hidden;*/
     text-decoration: none;
 }
 
@@ -297,6 +298,7 @@
     align-items: center;
     justify-content: center;
     animation: pulse 2s infinite;
+    z-index: 2;
 }
 
 .footer {
