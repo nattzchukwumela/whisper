@@ -1,6 +1,6 @@
 // app/page.tsx
 import Link from "next/link";
-import Header from "../component/HeaderComponent";
+// import Header from "../component/HeaderComponent";
 import "./style.css";
 
 export default function HomePage() {
