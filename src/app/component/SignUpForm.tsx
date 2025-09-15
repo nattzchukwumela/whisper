@@ -19,7 +19,7 @@ export default function SignUpForm() {
     setApiError(null);
     setIsLoading(true);
     try {
-      const res = await axios.post("/api/auth/signup/", data, {
+      const res = await axios.post("/api/auth/signup", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -39,8 +39,6 @@ export default function SignUpForm() {
     } finally {
       setIsLoading(false);
     }
-    // TODO: Replace with your actual API call to register the user
-    // Example: try { await signUp(data); } catch (err) { setApiError('Username or email already exists.'); }
   };
 
   return (
