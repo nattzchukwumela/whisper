@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${user.name} on Whisper`,
       description: `Send an anonymous message to ${user.name} on Whisper.`,
-      url: `https://yourdomain.com/${user.uniqueLink}`,
+      url: `https://whisper-lemon.vercel.app/${user.uniqueLink}`,
       siteName: "Whisper",
       images: [
         {

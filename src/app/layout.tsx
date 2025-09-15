@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Whisper - Private Social Media",
     description: "Express yourself anonymously in a calm, safe space.",
-    url: "https://yourdomain.com",
+    url: "https://whisper-lemon.vercel.app",
     siteName: "Whisper",
     images: [
       {
