@@ -1,5 +1,4 @@
 // app/layout.tsx
-
 import { Metadata } from "next";
 import "./globals.css";
 
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
     siteName: "Whisper",
     images: [
       {
-        url: "/og-image.png", // ✅ This pulls from /public/og-image.png
+        url: "https://whisper-lemon.vercel.app/og-image.png", // ✅ Absolute URL
         width: 1200,
         height: 630,
         alt: "Whisper Social Platform",
@@ -27,8 +26,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Whisper - Private Social Media",
     description: "A calm, anonymous space to share thoughts.",
-    images: ["/og-image.png"], // ✅ Works fine from public/
+    images: ["https://whisper-lemon.vercel.app/og-image.png"], // ✅ Absolute URL
   },
+  metadataBase: new URL("https://whisper-lemon.vercel.app"), // ✅ This helps with relative URLs
 };
 
 export default function RootLayout({
@@ -38,7 +38,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* The 'inter.className' applies the font, and the body tag is ready for our styles */}
       <body>{children}</body>
     </html>
   );
