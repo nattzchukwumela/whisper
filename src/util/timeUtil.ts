@@ -54,26 +54,13 @@ testDates.forEach((date) => {
   console.log(`${date} -> ${formatTimeAgo(date)}`);
 });
 
-// Additional test cases
-const now = Date.now();
-console.log("\nAdditional tests:");
-console.log(formatTimeAgo(now - 15000)); // 15 seconds ago -> "just now"
-console.log(formatTimeAgo(now - 60 * 1000)); // 1 minute ago
-console.log(formatTimeAgo(now - 60 * 60 * 1000)); // 1 hour ago
-console.log(formatTimeAgo(now - 24 * 60 * 60 * 1000)); // 1 day ago -> "yesterday"
-console.log(formatTimeAgo(now - 2 * 24 * 60 * 60 * 1000)); // 2 days ago
-
-// // Example usage:
+// // Additional test cases
 // const now = Date.now();
-// const oneMinuteAgo = now - 60 * 1000;
-// const oneHourAgo = now - 60 * 60 * 1000;
-// const oneDayAgo = now - 24 * 60 * 60 * 1000;
-// const twoDaysAgo = now - 2 * 24 * 60 * 60 * 1000;
-
-// console.log(formatTimeAgo(now - 15000)); // "just now"
-// console.log(formatTimeAgo(oneMinuteAgo)); // "1 minute ago"
-// console.log(formatTimeAgo(oneHourAgo)); // "1 hour ago"
-// console.log(formatTimeAgo(oneDayAgo)); // "yesterday"
-// console.log(formatTimeAgo(twoDaysAgo)); // "2 days ago"
+// console.log("\nAdditional tests:");
+// console.log(formatTimeAgo(now - 15000)); // 15 seconds ago -> "just now"
+// console.log(formatTimeAgo(now - 60 * 1000)); // 1 minute ago
+// console.log(formatTimeAgo(now - 60 * 60 * 1000)); // 1 hour ago
+// console.log(formatTimeAgo(now - 24 * 60 * 60 * 1000)); // 1 day ago -> "yesterday"
+// console.log(formatTimeAgo(now - 2 * 24 * 60 * 60 * 1000)); // 2 days ago
 
 export { formatTimeAgo };
