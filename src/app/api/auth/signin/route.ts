@@ -49,7 +49,11 @@ export async function POST(req: Request) {
   }
 
   // lookup user by email
-  const user = await prisma.user.findUnique({ where: { email: identifier } });
+  const user = await prisma.user.findFirst({
+    where: {
+      OR: [{ email: identifier }, { name: identifier }],
+    },
+  });
   if (!user) {
     return NextResponse.json(
       { success: false, error: "Invalid credentials" },
