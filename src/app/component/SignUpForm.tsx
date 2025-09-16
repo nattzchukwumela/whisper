@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
   const {
@@ -13,7 +14,7 @@ export default function SignUpForm() {
   } = useForm();
   const [apiError, setApiError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const router = useRouter();
   // Placeholder for your sign-up submission logic
   const onSubmit = async (data: any) => {
     setApiError(null);
@@ -24,7 +25,7 @@ export default function SignUpForm() {
           "Content-Type": "application/json",
         },
       });
-      console.log("Sign Uo Successful:", res.data);
+      router.push("/");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         if (err.response) {

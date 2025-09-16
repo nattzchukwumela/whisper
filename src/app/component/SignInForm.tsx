@@ -26,9 +26,6 @@ export default function SignInForm() {
           "Content-Type": "application/json",
         },
       });
-
-      console.log("Login success:", res.data);
-
       // TODO: handle redirect, store session, etc.
       router.push("/");
     } catch (err: any) {
