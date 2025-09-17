@@ -1,0 +1,13 @@
+name: Cleanup Messages
+
+on:
+  schedule:
+    - cron: "0 * * * *" # every hour
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call cleanup API
+        run: curl -X GET "https://your-vercel-app.vercel.app/api/cleanup"
