@@ -112,7 +112,7 @@ const WhispersMessagesPage = ({
     // You'll implement this with html2canvas or similar
   };
 
-  if (!isLoading) return <MessagesLoadingSkeleton />;
+  if (isLoading) return <MessagesLoadingSkeleton />;
 
   return (
     <div className={`messages-container ${isDark ? "dark" : "light"}`}>
