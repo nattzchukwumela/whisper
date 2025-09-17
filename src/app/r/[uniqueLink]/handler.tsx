@@ -26,19 +26,21 @@ import "./handler.css";
 import axios from "axios";
 import { messages } from "@/lib/sampleData";
 import { formatTimeAgo } from "@/util/timeUtil";
+import MessagesLoadingSkeleton from "./skeleton";
 
 const WhispersMessagesPage = ({
   user,
   uniqueLink,
 }: AnonymousMessageSenderProps) => {
   const [isDark, setIsDark] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Messages");
   const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
   const [messagesData, setMessagesData] = useState<messagesTypes[]>(messages);
 
   useEffect(() => {
     const fetchMessages = async () => {
-      console.log(uniqueLink);
+      setIsLoading(true);
       try {
         const res = await axios.get(`/api/messages/received/${uniqueLink}`);
         if (res.status === 200) {
@@ -48,6 +50,8 @@ const WhispersMessagesPage = ({
         }
       } catch (error) {
         console.error("Error fetching messages:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -107,6 +111,8 @@ const WhispersMessagesPage = ({
     console.log(`Download image for message ${messageId}`);
     // You'll implement this with html2canvas or similar
   };
+
+  if (!isLoading) return <MessagesLoadingSkeleton />;
 
   return (
     <div className={`messages-container ${isDark ? "dark" : "light"}`}>
