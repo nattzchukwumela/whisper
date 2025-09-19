@@ -26,3 +26,12 @@ pnpm Install
 
 # Start development server
 pnpm dev
+
+# Setup .env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB_NAME
+NEXTAUTH_SECRET=your_secret_key
+NEXTAUTH_URL=http://localhost:3000
+NODE_ENV=development
+
+# Run database migrations
+pnpx prisma migrate dev
