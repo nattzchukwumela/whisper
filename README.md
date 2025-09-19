@@ -1,37 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Whisper 🕊️
+An anonymous messaging platform built with **Next.js**, **Prisma**, and **PostgreSQL**.
 
-## Getting Started
+Whisper allows users to create a **unique link** they can share with others. Anyone with the link can send the user an **anonymous private message**. Messages must be categorized (e.g. *love, anxiety, happy, sad, venting*) before submission, ensuring better organization and context.
 
-First, run the development server:
+---
 
+## ✨ Features
+- 🔗 **Unique User Links** — each user gets a personal link for receiving messages.
+- 📨 **Anonymous Messaging** — senders don’t need an account.
+- 🏷️ **Message Categories** — messages must belong to a category (*love, anxiety, happy, sad, venting*, etc.).
+- 🔑 **Authentication** — implemented with NextAuth, with **custom access & refresh token handling**.
+- 🗄️ **Database** — powered by **PostgreSQL** with **Prisma ORM**.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/nattzchukwumela/whisper.git
+cd whisper
+
+# Install dependecies
+pnpm Install
+
+# Start development server
 pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# whisper
