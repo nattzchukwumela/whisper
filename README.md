@@ -103,3 +103,16 @@ Styling: CSS
  Push to branch: git push origin feature/your-feature
 
  Open a Pull Request
+
+
+
+
+ 🙌 Acknowledgements
+
+ Next.js
+
+ Prisma
+
+ NextAuth.js
+
+ PostgreSQL
