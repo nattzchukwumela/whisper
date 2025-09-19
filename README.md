@@ -65,3 +65,35 @@ whisper/
 ├── next.config.mjs # Next.js configuration
 ├── eslint.config.js # ESLint config
 └── README.md # Project documentation
+
+
+🛠️ Tech Stack
+Frontend: Next.js 14 (App Router)
+
+Backend: NextAuth (custom token handling)
+
+Database: PostgreSQL + Prisma
+
+Styling: (Add here if you use Tailwind/SCSS/etc.)
+
+📌 Roadmap
+ Add message moderation tools
+
+ Add user dashboard for managing received messages
+
+ Enable reactions/emojis on messages
+
+ Deploy to Vercel/Fly.io with production PostgreSQL
+
+🤝 Contributing
+Contributions are welcome!
+
+Fork the repo
+
+Create your feature branch: git checkout -b feature/your-feature
+
+Commit your changes: git commit -m 'Add new feature'
+
+Push to branch: git push origin feature/your-feature
+
+Open a Pull Request
