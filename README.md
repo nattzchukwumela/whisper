@@ -74,26 +74,32 @@ Backend: NextAuth (custom token handling)
 
 Database: PostgreSQL + Prisma
 
-Styling: (Add here if you use Tailwind/SCSS/etc.)
+Styling: CSS
 
 📌 Roadmap
+
  Add message moderation tools
 
  Add user dashboard for managing received messages
 
+ Add message recieve page needs proper ui updates
+
+ Add Proper light and dark theme Features
+
  Enable reactions/emojis on messages
 
- Deploy to Vercel/Fly.io with production PostgreSQL
+ Deploy to Vercel with production PostgreSQL
 
-🤝 Contributing
-Contributions are welcome!
+ 🤝 Contributing
 
-Fork the repo
+ Contributions are welcome!
 
-Create your feature branch: git checkout -b feature/your-feature
+ Fork the repo
 
-Commit your changes: git commit -m 'Add new feature'
+ Create your feature branch: git checkout -b feature/your-feature
 
-Push to branch: git push origin feature/your-feature
+ Commit your changes: git commit -m 'Add new feature'
 
-Open a Pull Request
+ Push to branch: git push origin feature/your-feature
+
+ Open a Pull Request
