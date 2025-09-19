@@ -35,3 +35,33 @@ NODE_ENV=development
 
 # Run database migrations
 pnpx prisma migrate dev
+
+# project setup
+whisper/
+├── .github/workflows/ # GitHub Actions (CI/CD)
+├── prisma/ # Prisma schema & migrations
+├── public/ # Static assets (icons, manifest, etc.)
+├── src/
+│ ├── app/
+│ │ ├── anonymous_message/ # Handles sending anonymous messages
+│ │ ├── api/ # API routes
+│ │ ├── app_style/ # Global/shared styles
+│ │ ├── auth/ # Authentication (NextAuth + JWT handling)
+│ │ ├── component/ # Reusable UI components
+│ │ ├── dashboard/ # User dashboard
+│ │ ├── landing_page/ # Public landing page
+│ │ ├── r/[uniqueLink]/ # Dynamic route for unique user links
+│ │ ├── u/[uniqueLink]/ # User’s unique anonymous link page
+│ │ ├── layout.tsx # Root layout
+│ │ ├── middleware.ts # Middleware (auth checks, etc.)
+│ │ ├── page.tsx # Main entry page
+│ │ ├── globals.css # Global styles
+│ │ └── site.webmanifest # PWA manifest
+│ │
+│ ├── lib/ # Utility functions (auth helpers, db utils, etc.)
+│ └── util/ # Custom helper utilities
+│
+├── .env # Environment variables
+├── next.config.mjs # Next.js configuration
+├── eslint.config.js # ESLint config
+└── README.md # Project documentation
