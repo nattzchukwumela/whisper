@@ -27,6 +27,7 @@ import axios from "axios";
 import { messages } from "@/lib/sampleData";
 import { formatTimeAgo } from "@/util/timeUtil";
 import MessagesLoadingSkeleton from "./skeleton";
+import { SkeletonComponent } from "@/app/component/SkeletonComponent/skeleton";
 
 const WhispersMessagesPage = ({
   user,
@@ -36,7 +37,7 @@ const WhispersMessagesPage = ({
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Messages");
   const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
-  const [messagesData, setMessagesData] = useState<messagesTypes[]>(messages);
+  const [messagesData, setMessagesData] = useState<messagesTypes[] | null>([]);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -68,7 +69,7 @@ const WhispersMessagesPage = ({
   const filteredMessages =
     selectedCategory === "All Messages"
       ? messagesData
-      : messagesData.filter((msg) => msg.category === selectedCategory);
+      : messagesData?.filter((msg) => msg.category === selectedCategory);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -112,7 +113,7 @@ const WhispersMessagesPage = ({
     // You'll implement this with html2canvas or similar
   };
 
-  if (isLoading) return <MessagesLoadingSkeleton />;
+  // if (isLoading) return <MessagesLoadingSkeleton />;
 
   return (
     <div className={`messages-container ${isDark ? "dark" : "light"}`}>
@@ -167,93 +168,97 @@ const WhispersMessagesPage = ({
             <p className="message-count">{filteredMessages?.length} messages</p>
           </div>
 
-          <div className="messages-grid">
-            {filteredMessages &&
-              filteredMessages?.map((message) => {
-                const categoryInfo = getCategoryInfo(message.category);
-                return (
-                  <div key={message.id} className="message-wrapper">
-                    <div
-                      className="message-card"
-                      style={
-                        {
-                          "--message-color": categoryInfo.color,
-                        } as React.CSSProperties
-                      }
-                    >
-                      <div className="message-header">
-                        <div className="category-badge">
-                          <span className="category-emoji">
-                            {categoryInfo.emoji}
-                          </span>
-                          <span className="category-name">
-                            {message.category === "work_school"
-                              ? "Work & School"
-                              : message.category.charAt(0).toUpperCase() +
-                                message.category.slice(1)}
-                          </span>
-                        </div>
-                        <div className="message-actions">
-                          <div className="share-container">
-                            <button
-                              className="action-btn share-btn"
-                              onClick={() =>
-                                setShareMenuOpen(
-                                  shareMenuOpen === message.id
-                                    ? null
-                                    : message.id,
-                                )
-                              }
-                            >
-                              <Share2 size={16} />
-                            </button>
-                            {shareMenuOpen === message.id && (
-                              <div className="share-menu">
-                                {socialPlatforms.map((platform) => {
-                                  const IconComponent = platform.icon;
-                                  return (
-                                    <button
-                                      key={platform.name}
-                                      className="share-option"
-                                      onClick={() =>
-                                        handleShare(
-                                          message.id,
-                                          platform.name as platformsTypes,
-                                        )
-                                      }
-                                      style={
-                                        {
-                                          "--platform-color": platform.color,
-                                        } as React.CSSProperties
-                                      }
-                                    >
-                                      <IconComponent size={16} />
-                                      <span>{platform.name}</span>
-                                    </button>
-                                  );
-                                })}
-                              </div>
-                            )}
+          {isLoading ? (
+            <SkeletonComponent />
+          ) : (
+            <div className="messages-grid">
+              {filteredMessages &&
+                filteredMessages?.map((message) => {
+                  const categoryInfo = getCategoryInfo(message.category);
+                  return (
+                    <div key={message.id} className="message-wrapper">
+                      <div
+                        className="message-card"
+                        style={
+                          {
+                            "--message-color": categoryInfo.color,
+                          } as React.CSSProperties
+                        }
+                      >
+                        <div className="message-header">
+                          <div className="category-badge">
+                            <span className="category-emoji">
+                              {categoryInfo.emoji}
+                            </span>
+                            <span className="category-name">
+                              {message.category === "work_school"
+                                ? "Work & School"
+                                : message.category.charAt(0).toUpperCase() +
+                                  message.category.slice(1)}
+                            </span>
                           </div>
-                          <button
-                            className="action-btn download-btn"
-                            onClick={() => handleDownloadImage(message.id)}
-                          >
-                            <Download size={16} />
-                          </button>
+                          <div className="message-actions">
+                            <div className="share-container">
+                              <button
+                                className="action-btn share-btn"
+                                onClick={() =>
+                                  setShareMenuOpen(
+                                    shareMenuOpen === message.id
+                                      ? null
+                                      : message.id,
+                                  )
+                                }
+                              >
+                                <Share2 size={16} />
+                              </button>
+                              {shareMenuOpen === message.id && (
+                                <div className="share-menu">
+                                  {socialPlatforms.map((platform) => {
+                                    const IconComponent = platform.icon;
+                                    return (
+                                      <button
+                                        key={platform.name}
+                                        className="share-option"
+                                        onClick={() =>
+                                          handleShare(
+                                            message.id,
+                                            platform.name as platformsTypes,
+                                          )
+                                        }
+                                        style={
+                                          {
+                                            "--platform-color": platform.color,
+                                          } as React.CSSProperties
+                                        }
+                                      >
+                                        <IconComponent size={16} />
+                                        <span>{platform.name}</span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
+                            <button
+                              className="action-btn download-btn"
+                              onClick={() => handleDownloadImage(message.id)}
+                            >
+                              <Download size={16} />
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      <p className="message-content">{message.text}</p>
-                      <div className="message-footer">
-                        <span className="createdAt">
-                          {formatTimeAgo(message.createdAt)}
-                        </span>
+                        <p className="message-content">{message.text}</p>
+                        <div className="message-footer">
+                          <span className="createdAt">
+                            {formatTimeAgo(message.createdAt)}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-          </div>
+                  );
+                })}
+            </div>
+          )}
         </main>
       </div>
     </div>
