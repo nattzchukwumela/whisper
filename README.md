@@ -1,6 +1,9 @@
 # Whisper 🕊️
 An anonymous messaging platform built with **Next.js**, **Prisma**, and **PostgreSQL**.
 
+🌍 **Live Demo**: [https://whisper-lemon.vercel.app](https://whisper-lemon.vercel.app)
+
+
 Whisper allows users to create a **unique link** they can share with others. Anyone with the link can send the user an **anonymous private message**. Messages must be categorized (e.g. *love, anxiety, happy, sad, venting*) before submission, ensuring better organization and context.
 
 ---
@@ -22,12 +25,13 @@ git clone https://github.com/nattzchukwumela/whisper.git
 cd whisper
 
 # Install dependecies
-pnpm Install
+pnpm install
 
 # Start development server
 pnpm dev
 
 # Setup .env
+
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB_NAME
 NEXTAUTH_SECRET=your_secret_key
 NEXTAUTH_URL=http://localhost:3000
@@ -37,6 +41,7 @@ NODE_ENV=development
 pnpx prisma migrate dev
 
 # project setup
+
 whisper/
 ├── .github/workflows/ # GitHub Actions (CI/CD)
 ├── prisma/ # Prisma schema & migrations
@@ -67,7 +72,7 @@ whisper/
 └── README.md # Project documentation
 
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 Frontend: Next.js 14 (App Router)
 
 Backend: NextAuth (custom token handling)
@@ -76,7 +81,7 @@ Database: PostgreSQL + Prisma
 
 Styling: CSS
 
-📌 Roadmap
+## 📌 Roadmap
 
  Add message moderation tools
 
@@ -90,7 +95,7 @@ Styling: CSS
 
  Deploy to Vercel with production PostgreSQL
 
- 🤝 Contributing
+ ## 🤝 Contributing
 
  Contributions are welcome!
 
@@ -105,9 +110,9 @@ Styling: CSS
  Open a Pull Request
 
 
-📜 License
+## 📜 License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT License](LICENSE).
 
 
  🙌 Acknowledgements
