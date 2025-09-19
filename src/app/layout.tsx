@@ -6,14 +6,16 @@ export const metadata: Metadata = {
   title: "Whisper - Private Social Media",
   description:
     "Whisper is a secure, anonymous platform to share your thoughts and feelings.",
+  metadataBase: new URL("https://whisper-lemon.vercel.app"),
+
   openGraph: {
     title: "Whisper - Private Social Media",
     description: "Express yourself anonymously in a calm, safe space.",
-    url: "https://whisper-lemon.vercel.app",
+    url: "/", // Can be relative now due to metadataBase
     siteName: "Whisper",
     images: [
       {
-        url: "https://whisper-lemon.vercel.app/og-image.png", // ✅ Absolute URL
+        url: "/og-image.png", // Can be relative now
         width: 1200,
         height: 630,
         alt: "Whisper Social Platform",
@@ -22,13 +24,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Whisper - Private Social Media",
     description: "A calm, anonymous space to share thoughts.",
-    images: ["https://whisper-lemon.vercel.app/og-image.png"], // ✅ Absolute URL
+    images: ["/og-image.png"], // Can be relative now
   },
-  metadataBase: new URL("https://whisper-lemon.vercel.app"), // ✅ This helps with relative URLs
 };
 
 export default function RootLayout({
