@@ -20,13 +20,4 @@ class EncryptMessageString {
   }
 }
 
-// ✅ Example usage:
-const crypto = new EncryptMessageString(key);
-
-const encrypted = crypto.encrypt("Hello Whisper!");
-console.log("Encrypted:", encrypted);
-
-const decrypted = crypto.decrypt(encrypted);
-console.log("Decrypted:", decrypted);
-
 export { EncryptMessageString };
