@@ -41,18 +41,18 @@ function formatTimeAgo(inputDate) {
 }
 
 // Test with your actual data
-const testDates = [
-  "2025-09-11T23:16:32.398Z", // Should show relative to current time
-  "2025-09-11T23:16:05.980Z",
-  "2025-09-11T23:10:52.231Z",
-  "2025-09-03T08:48:57.526Z", // Should show "10 days ago" or similar
-];
+// const testDates = [
+//   "2025-09-11T23:16:32.398Z", // Should show relative to current time
+//   "2025-09-11T23:16:05.980Z",
+//   "2025-09-11T23:10:52.231Z",
+//   "2025-09-03T08:48:57.526Z", // Should show "10 days ago" or similar
+// ];
 
-console.log("Current time:", new Date().toISOString());
-console.log("\nTest results:");
-testDates.forEach((date) => {
-  console.log(`${date} -> ${formatTimeAgo(date)}`);
-});
+// console.log("Current time:", new Date().toISOString());
+// console.log("\nTest results:");
+// testDates.forEach((date) => {
+//   console.log(`${date} -> ${formatTimeAgo(date)}`);
+// });
 
 // // Additional test cases
 // const now = Date.now();

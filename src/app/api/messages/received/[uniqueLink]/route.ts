@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
+import { EncryptMessageString } from "@/util/aes";
 import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ uniqueLink: string }> },
 ) {
+  const key = process.env.SECRET_KEY!;
   try {
     const { uniqueLink } = await params;
 
@@ -27,18 +29,26 @@ export async function GET(
       );
     }
 
+    const crypto = new EncryptMessageString(key);
     // Fetch all anonymous messages tied to this user
-    const messages = await prisma.anonymousMessage.findMany({
+    const messagesData = await prisma.anonymousMessage.findMany({
       where: { receiverId: user.id },
       orderBy: { createdAt: "desc" }, // optional: newest first
     });
 
-    if (messages.length === 0) {
+    if (messagesData.length === 0) {
       return NextResponse.json(
         { success: false, message: "No messages found or No messages" },
         { status: 404 },
       );
     }
+
+    const messages = () => {
+      return messagesData.map((msg) => ({
+        ...msg,
+        text: crypto.decrypt(msg.text),
+      }));
+    };
 
     return NextResponse.json(
       {
