@@ -26,7 +26,6 @@ import "./handler.css";
 import axios from "axios";
 import { messages } from "@/lib/sampleData";
 import { formatTimeAgo } from "@/util/timeUtil";
-import MessagesLoadingSkeleton from "./skeleton";
 import { SkeletonComponent } from "@/app/component/SkeletonComponent/skeleton";
 
 const WhispersMessagesPage = ({
