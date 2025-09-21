@@ -46,6 +46,8 @@ const WhispersMessagesPage = ({
         const res = await axios.get(`/api/messages/received/${uniqueLink}`);
         if (res.status === 200) {
           setMessagesData(res.data.messageData);
+          // only uncommented the code below on development
+          // console.log(res.data.messageData);
         } else {
           console.log("Something went wrong");
         }

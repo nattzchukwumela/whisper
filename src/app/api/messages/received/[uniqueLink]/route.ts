@@ -30,10 +30,11 @@ export async function GET(
     }
 
     const crypto = new EncryptMessageString(key);
+
     // Fetch all anonymous messages tied to this user
     const messagesData = await prisma.anonymousMessage.findMany({
       where: { receiverId: user.id },
-      orderBy: { createdAt: "desc" }, // optional: newest first
+      orderBy: { createdAt: "desc" },
     });
 
     if (messagesData.length === 0) {
@@ -43,18 +44,17 @@ export async function GET(
       );
     }
 
-    const messages = () => {
-      return messagesData.map((msg) => ({
-        ...msg,
-        text: crypto.decrypt(msg.text),
-      }));
-    };
+    // ✅ Decrypt messages here
+    const decryptedMessages = messagesData.map((msg) => ({
+      ...msg,
+      text: crypto.decrypt(msg.text),
+    }));
 
     return NextResponse.json(
       {
         success: true,
         message: "Messages retrieved",
-        messageData: messages,
+        messageData: decryptedMessages, // ✅ actual array
       },
       { status: 200 },
     );
