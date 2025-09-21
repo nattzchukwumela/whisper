@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
+import { EncryptMessageString } from "@/util/aes";
 import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
   { params }: { params: { uniqueLink: string } },
 ) {
+  const key = process.env.SECRET_KEY!;
   try {
     const { text, category } = await req.json();
     // check for user
@@ -19,11 +21,12 @@ export async function POST(
       );
     }
 
+    const crypto = new EncryptMessageString(key);
     // create message
     const message = await prisma.anonymousMessage.create({
       data: {
         receiverId: user.id,
-        text,
+        text: crypto.encrypt(text),
         category,
       },
     });

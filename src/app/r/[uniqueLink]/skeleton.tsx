@@ -37,7 +37,8 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
         .messages-container {
           min-height: 100vh;
           transition: all 0.3s ease;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          font-family:
+            -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
           position: relative;
         }
 
@@ -104,7 +105,12 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           font-size: 1.5rem;
           font-weight: 700;
           margin: 0 0 8px 0;
-          background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+          background: linear-gradient(
+            135deg,
+            #6366f1 0%,
+            #8b5cf6 50%,
+            #d946ef 100%
+          );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -137,34 +143,64 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           width: 20px;
           height: 20px;
           border-radius: 4px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .skeleton-emoji {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .skeleton-emoji {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .skeleton-text {
           flex: 1;
           height: 16px;
           border-radius: 4px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .skeleton-text {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .skeleton-text {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .main-content {
@@ -181,34 +217,64 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           height: 32px;
           border-radius: 8px;
           margin-bottom: 8px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .page-title-skeleton {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .page-title-skeleton {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .message-count-skeleton {
           width: 120px;
           height: 14px;
           border-radius: 4px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .message-count-skeleton {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .message-count-skeleton {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .messages-grid {
@@ -247,17 +313,32 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           width: 100px;
           height: 28px;
           border-radius: 20px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .category-badge-skeleton {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .category-badge-skeleton {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .message-actions-skeleton {
@@ -270,17 +351,32 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .action-btn-skeleton {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .action-btn-skeleton {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .message-content-skeleton {
@@ -291,17 +387,32 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           height: 16px;
           border-radius: 4px;
           margin-bottom: 8px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .skeleton-line {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .skeleton-line {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         .skeleton-line.long {
@@ -325,17 +436,32 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
           width: 80px;
           height: 12px;
           border-radius: 4px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
         }
 
         .dark .timestamp-skeleton {
-          background: linear-gradient(90deg, rgba(71, 85, 105, 0.3), rgba(71, 85, 105, 0.6), rgba(71, 85, 105, 0.3));
+          background: linear-gradient(
+            90deg,
+            rgba(71, 85, 105, 0.3),
+            rgba(71, 85, 105, 0.6),
+            rgba(71, 85, 105, 0.3)
+          );
         }
 
         .light .timestamp-skeleton {
-          background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0.4), rgba(148, 163, 184, 0.2));
+          background: linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2),
+            rgba(148, 163, 184, 0.4),
+            rgba(148, 163, 184, 0.2)
+          );
         }
 
         @keyframes shimmer {
@@ -424,9 +550,7 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
             <p className="app-subtitle">Share your thoughts freely</p>
           </div>
 
-          <nav className="navigation">
-            {sidebarSkeletonItems}
-          </nav>
+          <nav className="navigation">{sidebarSkeletonItems}</nav>
         </aside>
 
         {/* Main Content */}
@@ -436,9 +560,7 @@ const MessagesLoadingSkeleton = ({ isDark = true }) => {
             <div className="message-count-skeleton"></div>
           </div>
 
-          <div className="messages-grid">
-            {messageSkeletonCards}
-          </div>
+          <div className="messages-grid">{messageSkeletonCards}</div>
         </main>
       </div>
     </div>
