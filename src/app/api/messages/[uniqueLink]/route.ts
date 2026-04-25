@@ -4,14 +4,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
-  { params }: { params: { uniqueLink: string } },
+  { params }: { params: Promise<{ uniqueLink: string }> },
 ) {
   const key = process.env.SECRET_KEY!;
   try {
+    const { uniqueLink } = await params;
     const { text, category } = await req.json();
     // check for user
     const user = await prisma.user.findUnique({
-      where: { uniqueLink: params.uniqueLink },
+      where: { uniqueLink: uniqueLink },
     });
 
     if (!user) {
