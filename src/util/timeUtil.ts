@@ -1,10 +1,7 @@
-function formatTimeAgo(inputDate: string | number | Date): string {
-  // Normalize input into a Date object
+function formatTimeAgo(inputDate) {
+  // Handle both timestamp numbers and ISO date strings
   const date =
-    typeof inputDate === "string" || typeof inputDate === "number"
-      ? new Date(inputDate)
-      : inputDate;
-
+    typeof inputDate === "string" ? new Date(inputDate) : new Date(inputDate);
   const now = new Date();
   const diffInMilliseconds = now.getTime() - date.getTime();
   const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
@@ -17,12 +14,7 @@ function formatTimeAgo(inputDate: string | number | Date): string {
   // Set up the formatter for automatic text (e.g., "yesterday" instead of "1 day ago")
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
-  type Interval = {
-    unit: Intl.RelativeTimeFormatUnit;
-    threshold: number;
-  };
-
-  const intervals: Interval[] = [
+  const intervals = [
     { unit: "year", threshold: 31536000 }, // 365 * 24 * 60 * 60
     { unit: "month", threshold: 2592000 }, // 30 * 24 * 60 * 60
     { unit: "day", threshold: 86400 }, // 24 * 60 * 60
